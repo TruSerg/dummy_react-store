@@ -1,0 +1,18 @@
+.stock {
+  font-size: 18px;
+  font-weight: 600;
+  color: #6440d0;
+
+  &Point {
+    color: #000;
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 490px) {
+  .stock {
+    font-size: 16px;
+  }
+}
+
+

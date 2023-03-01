@@ -1,0 +1,153 @@
+.wrapper {
+  padding: 50px 0;
+
+  &Slider {
+    margin-bottom: 100px;
+  }
+
+  &Title {
+    text-transform: uppercase;
+    font-size: 28px;
+    color: rgba(100, 64, 208, 1);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &Product {
+    display: flex;
+    gap: 30px;
+  }
+
+  &Img {
+    max-width: 400px;
+    min-height: 400px;
+  }
+
+  &ProductDetails {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &ProductTitle {
+    text-transform: uppercase;
+    font-size: 26px;
+    color: #6440d0;
+    margin-bottom: 20px;
+  }
+
+  &ProductDescription {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  &ProductStock {
+    margin-bottom: 20px;
+    margin-top: auto;
+  }
+
+  &ProductPrice {
+    margin-bottom: 20px;
+    margin-top: auto;
+  }
+
+  &Footer {
+    margin-top: auto;
+  }
+
+  &Btn {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
+@media(max-width: 767px) {
+  .wrapper {
+    padding: 30px 0;
+
+    &Slider {
+      margin-bottom: 30px;
+    }
+
+    &Title {
+      font-size: 26px;
+    }
+
+    &Product {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &Img {
+      margin: 0 auto;
+      max-width: 400px;
+      min-height: auto;
+    }
+
+    &ProductDetails {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &ProductTitle {
+      text-align: center;
+      font-size: 24px;
+    }
+
+    &ProductDescription {
+      font-size: 20px;
+    }
+
+    &ProductStock {
+      width: 100%;
+      margin-top: auto;
+    }
+
+    &ProductPrice {
+      margin-top: auto;
+    }
+
+    &Footer {
+      max-width: 100%;
+    }
+
+    &Btn {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media(max-width: 490px) {
+  .wrapper {
+    &Slider {
+      margin-bottom: 20px;
+    }
+
+    &Title {
+      font-size: 24px;
+    }
+
+    &Product {
+      gap: 20px;
+    }
+
+    &ProductTitle {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    &ProductDescription {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    &ProductStock {
+      margin-bottom: 15px;
+    }
+
+    &ProductPrice {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+
