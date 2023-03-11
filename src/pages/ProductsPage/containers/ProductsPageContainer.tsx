@@ -22,8 +22,14 @@ const ProductsPageContainer: FC = () => {
     error,
   } = useGetProductsQuery();
 
-  const { list, isPageLoading, currentPage, pageCount, handlePageChange } =
-    usePagination(products);
+  const {
+    list,
+    isPageLoading,
+    currentPage,
+    pageCount,
+    firstProductsIndex,
+    handlePageChange,
+  } = usePagination(products);
 
   const handleGetProductDetails = useCallback(
     (productId: number) => {

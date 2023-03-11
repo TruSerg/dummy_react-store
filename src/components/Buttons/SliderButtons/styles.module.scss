@@ -1,0 +1,44 @@
+.swiperButtonNext {
+  color: rgba(168, 77, 152, 0.5);
+  fill: rgba(255, 255, 255, 0.5);
+  width: 70px;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    color: rgba(168, 77, 152, 1);
+    fill: rgba(255, 255, 255, 1);
+  }
+}
+
+.swiperButtonPrev {
+  color: rgba(168, 77, 152, 0.5);
+  fill: rgba(255, 255, 255, 0.5);
+  transform: rotate(180deg) translate(0, -50%);
+  width: 70px;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    color: rgba(168, 77, 152, 1);
+    fill: rgba(255, 255, 255, 1);
+  }
+}
+
+@media (max-width: 767px) {
+  .swiperButtonNext {
+    width: 60px;
+  }
+
+  .swiperButtonPrev {
+    width: 60px;
+  }
+}
+
+@media (max-width: 490px) {
+  .swiperButtonNext {
+    width: 50px;
+  }
+
+  .swiperButtonPrev {
+    width: 50px;
+  }
+}

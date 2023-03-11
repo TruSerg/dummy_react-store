@@ -1,0 +1,12 @@
+.cartIcon {
+  font-size: 40px;
+}
+
+.iconCart {
+  color: #fff;
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    color: #90c6fe;
+  }
+}

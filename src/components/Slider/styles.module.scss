@@ -3,49 +3,36 @@
   z-index: 1;
 }
 
-.sliderBtnRight {
+.sliderButtonNext {
   position: absolute;
-  color: rgba(100, 64, 208, 0.5);
-  fill: rgba(255, 255, 255, 0.5);
-  width: 80px;
   right: 0;
   bottom: 50%;
   transform: translate(0, 50%);
   z-index: 2;
-  transition: all .3s ease-in-out;
-
-  &:hover {
-    color: rgba(100, 64, 208, 1);
-    fill: rgba(255, 255, 255, 1);
-  }
 }
 
-.sliderBtnLeft {
+.sliderButtonPrev {
   position: absolute;
-  color: rgba(100, 64, 208, 0.5);
-  fill: rgba(255, 255, 255, 0.5);
-  transform: rotate(180deg) translate(0, -50%);
-  width: 80px;
   left: 0;
   bottom: 50%;
   z-index: 2;
-  transition: all .3s ease-in-out;
-
-  &:hover {
-    color: rgba(100, 64, 208, 1);
-    fill: rgba(255, 255, 255, 1);
-  }
 }
 
-.images {
+.imageSlide {
   display: flex;
-  height: 200px;
-  max-width: 200px;
-  width: 100%;
+  justify-content: center;
   margin: 0 auto;
+}
+
+.slideImg {
+  padding: 0 10px;
 }
 
 .img {
   object-fit: contain;
+  height: 200px;
 }
+
+
+
 

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import style from "./styles.module.scss";
 
@@ -14,4 +14,4 @@ const ProductPrice: FC<ProductPriceProps> = ({ price }) => {
   );
 };
 
-export default ProductPrice;
+export default memo(ProductPrice);

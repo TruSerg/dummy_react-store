@@ -1,12 +1,11 @@
-import React, { FC } from "react";
+import { FC, memo, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import { useSwiper } from "swiper/react";
 
 import "swiper/scss";
-import "swiper/scss/free-mode";
 
-import sprite from "../../static/sprite.svg";
+import SliderButtonNext from "../Buttons/SliderButtons/SliderButtonNext";
+import SliderButtonPrev from "../Buttons/SliderButtons/SliderButtonPrev";
 
 import style from "./styles.module.scss";
 
@@ -15,15 +14,14 @@ interface SliderProps {
 }
 
 const Slider: FC<SliderProps> = ({ images }) => {
-  const swiper = useSwiper();
+  // const [isVisibleButton, setIsVisibleButton] = useState(true);
+
   return (
     <Swiper
-      className={style.swiperSlider}
       grabCursor={true}
       modules={[Navigation]}
-      navigation
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      // onReachEnd={() => setIsVisibleButtonNext(false)}
+      // onReachBeginning={() => setIsVisibleButtonNext(false)}
       breakpoints={{
         1336: {
           slidesPerView: 5,
@@ -42,15 +40,13 @@ const Slider: FC<SliderProps> = ({ images }) => {
         },
       }}
     >
-      <svg className={style.sliderBtnRight} onClick={() => swiper.slideNext()}>
-        <use href={sprite + "#i-arrow_btn"} />
-      </svg>
-      <svg className={style.sliderBtnLeft} onClick={() => swiper.slidePrev()}>
-        <use href={sprite + "#i-arrow_btn"} />
-      </svg>
-      {images?.map((imgUrl) => (
-        <SwiperSlide key={imgUrl}>
-          <div className={style.images}>
+      <SliderButtonNext className={style.sliderButtonNext} />
+
+      <SliderButtonPrev className={style.sliderButtonPrev} />
+
+      {images?.map((imgUrl, index) => (
+        <SwiperSlide className={style.imageSlide} key={index}>
+          <div className={style.slideImg}>
             <img className={style.img} src={imgUrl} alt="product" />
           </div>
         </SwiperSlide>
@@ -59,4 +55,4 @@ const Slider: FC<SliderProps> = ({ images }) => {
   );
 };
 
-export default Slider;
+export default memo(Slider);

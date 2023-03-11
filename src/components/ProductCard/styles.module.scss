@@ -3,77 +3,71 @@
   flex-direction: column;
   max-width: 300px;
   width: 100% ;
-  border: 1px solid rgba(100, 64, 208, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
-  transition: border .3s ease-in-out;
+  transition: all .3s ease-in-out;
 
   &:hover {
-    border: 1px solid rgba(100, 64, 208, 1);
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.3);
   }
 
   &Point {
-    color: #000;
+    color: rgba(0, 0, 0, 0.6);
     font-weight: 400;
   }
 
   &Img {
+    position: relative;
     height: 200px;
     width: 100%;
     object-fit: cover;
     margin-bottom: 20px;
   }
 
+  &Discount {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 50px;
+    height: 30px;
+    border-bottom-right-radius: 10px;
+    background-color: #50af31;
+    padding: 10px;
+  }
+
   &Brand {
     font-size: 18px;
     font-weight: 600;
-    color: #6440d0;
-    margin-bottom: 20px;
+    color: #a84d98;
+    margin-bottom: 10px;
   }
 
   &Title {
     font-size: 18px;
-    color: #6440d0;
-    margin-bottom: 20px;
+    color: #a84d98;
+    margin-bottom: 10px;
   }
 
   &Stock {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   &Price {
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 767px) {
-  .productCard {
-    &Img {
-      margin-bottom: 15px;
-    }
-
-    &Brand {
-      margin-bottom: 15px;
-    }
-
-    &Title {
-      margin-bottom: 15px;
-    }
-
-    &Stock {
-      margin-bottom: 15px;
-    }
-
-    &Price {
-      margin-bottom: 15px;
-    }
+    margin-bottom: 10px;
   }
 }
 
 @media (max-width: 490px) {
   .productCard {
     &Title {
+      font-size: 16px;
+    }
+
+    &Brand {
       font-size: 16px;
     }
   }

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import style from "./styles.module.scss";
 
@@ -10,4 +10,4 @@ const Button: FC<ButtonProps> = ({ title }) => {
   return <button className={style.button}>{title}</button>;
 };
 
-export default Button;
+export default memo(Button);

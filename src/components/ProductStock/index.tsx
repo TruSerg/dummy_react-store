@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import style from "./styles.module.scss";
 
@@ -15,4 +15,4 @@ const ProductStock: FC<ProductStockProps> = ({ stock }) => {
   );
 };
 
-export default ProductStock;
+export default memo(ProductStock);

@@ -1,0 +1,21 @@
+.catalog {
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px;
+  margin-top: 5px;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    color: #90c6fe;
+    border: 1px solid #90c6fe;
+  }
+}
+
+.catalogItem {
+  color: #7db122 !important;
+  text-transform: uppercase !important;
+
+  &:hover {
+    color: #0066ff !important;
+  }
+}

@@ -6,6 +6,7 @@ const UsePagination = (array: IProduct[] | undefined) => {
   const [list, setList] = useState<IProduct[]>();
   const [isPageLoading, setIsPageLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+
   const [pageCount, setPageCount] = useState(0);
   const [perPage] = useState(10);
 
@@ -22,7 +23,7 @@ const UsePagination = (array: IProduct[] | undefined) => {
       if (array?.length !== undefined) {
         setPageCount(Math.ceil(array.length / perPage));
       }
-    }, 1000);
+    }, 500);
   }, [currentPage, array, perPage]);
 
   const handlePageChange = useCallback(
@@ -40,6 +41,7 @@ const UsePagination = (array: IProduct[] | undefined) => {
     isPageLoading,
     currentPage,
     pageCount,
+    firstProductsIndex,
     handlePageChange,
   };
 };

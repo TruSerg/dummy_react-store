@@ -1,5 +1,4 @@
-import { FC } from "react";
-import { memo } from "react";
+import { FC, memo } from "react";
 import { Pagination } from "@mui/material";
 
 import style from "./styles.module.scss";
@@ -16,16 +15,16 @@ const BasicPagination: FC<PaginationProps> = ({
   handlePageChange,
 }) => {
   return (
-    <div className={style.pagination}>
-      <Pagination
-        color="secondary"
-        variant="outlined"
-        shape="rounded"
-        count={pageCount}
-        page={currentPage}
-        onChange={(event, page) => handlePageChange(page)}
-      />
-    </div>
+    <Pagination
+      className={style.pagination}
+      size="small"
+      color="secondary"
+      variant="outlined"
+      shape="rounded"
+      count={pageCount}
+      page={currentPage}
+      onChange={(event, page) => handlePageChange(page)}
+    />
   );
 };
 

@@ -8,6 +8,7 @@ import BasicPagination from "../../../../components/Pagination";
 import Loader from "../../../../components/Loader";
 
 import style from "./styles.module.scss";
+import Title from "../../../../components/Title";
 
 interface ProductsPageProps {
   products: IProduct[] | undefined;
@@ -34,37 +35,51 @@ const ProductsPageLayout: FC<ProductsPageProps> = ({
 }) => {
   return (
     <div className={style.products}>
-      <Container>
-        {isError && <h2>{error.error}</h2>}
-        {/*{isProductsLoading && <Loader />}*/}
-        {isProductsLoading || isPageLoading ? (
-          <Loader />
-        ) : (
-          <div className={style.productsArea}>
-            <div className={style.productsWrapper}>
-              {products?.map(
-                ({ id, brand, title, price, stock, thumbnail }) => (
-                  <ProductCard
-                    key={id}
-                    brand={brand}
-                    title={title}
-                    price={price}
-                    stock={stock}
-                    thumbnail={thumbnail}
-                    handleGetProductDetails={() => handleGetProductDetails(id)}
-                  />
-                )
-              )}
+      {isError && <h2>{error.error}</h2>}
+      {isProductsLoading || isPageLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Title title={"Products"} />
+          <Container>
+            <div className={style.productsArea}>
+              <div className={style.productsWrapper}>
+                {products?.map(
+                  ({
+                    id,
+                    brand,
+                    title,
+                    price,
+                    stock,
+                    thumbnail,
+                    discountPercentage,
+                  }) => (
+                    <ProductCard
+                      key={id}
+                      brand={brand}
+                      title={title}
+                      price={price}
+                      stock={stock}
+                      thumbnail={thumbnail}
+                      discountPercentage={discountPercentage}
+                      handleGetProductDetails={() =>
+                        handleGetProductDetails(id)
+                      }
+                    />
+                  )
+                )}
+              </div>
+              <div className={style.productsPagination}>
+                <BasicPagination
+                  pageCount={pageCount}
+                  currentPage={currentPage}
+                  handlePageChange={handlePageChange}
+                />
+              </div>
             </div>
-
-            <BasicPagination
-              pageCount={pageCount}
-              currentPage={currentPage}
-              handlePageChange={handlePageChange}
-            />
-          </div>
-        )}
-      </Container>
+          </Container>
+        </>
+      )}
     </div>
   );
 };

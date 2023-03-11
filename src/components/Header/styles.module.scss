@@ -1,5 +1,10 @@
 .header {
   padding: 30px 0;
-  text-align: center;
-  background-color: #6440d0;
+  background-color: #37424e;
+
+  &Wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

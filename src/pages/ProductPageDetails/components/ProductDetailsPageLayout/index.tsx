@@ -8,8 +8,11 @@ import Button from "../../../../components/Buttons/Button";
 import Loader from "../../../../components/Loader";
 import ProductPrice from "../../../../components/ProductPrice";
 import ProductStock from "../../../../components/ProductStock";
+import Title from "../../../../components/Title";
 
 import style from "./styles.module.scss";
+import Rating from "../../../../components/Rating";
+import Discount from "../../../../components/Discount";
 
 interface ProductDetailsPageProps {
   product: IProduct;
@@ -22,26 +25,35 @@ const ProductDetailsPageLayout: FC<ProductDetailsPageProps> = ({
 }) => {
   return (
     <div className={style.wrapper}>
-      <Container>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <h2 className={style.wrapperTitle}>{product.brand}</h2>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Title title={product.title} />
+          <Container>
             <div className={style.wrapperSlider}>
               <Slider images={product.images} />
             </div>
             <div className={style.wrapperProduct}>
-              <div className={style.wrapperImg}>
-                <img src={product.thumbnail} alt="product" />
+              <div className={style.wrapperImage}>
+                <img
+                  className={style.wrapperImg}
+                  src={product.thumbnail}
+                  alt="product"
+                />
               </div>
-
               <div className={style.wrapperProductDetails}>
                 <h3 className={style.wrapperProductTitle}>{product.title}</h3>
                 <p className={style.wrapperProductDescription}>
                   {product.description}
                 </p>
-
+                <div className={style.wrapperProductRating}>
+                  <Rating value={product.rating} />
+                </div>
+                <Discount
+                  className={style.wrapperProductDiscount}
+                  value={product.discountPercentage}
+                />
                 <div className={style.wrapperFooter}>
                   <div className={style.wrapperProductStock}>
                     <ProductStock stock={product.stock} />
@@ -55,9 +67,9 @@ const ProductDetailsPageLayout: FC<ProductDetailsPageProps> = ({
                 </div>
               </div>
             </div>
-          </>
-        )}
-      </Container>
+          </Container>
+        </>
+      )}
     </div>
   );
 };

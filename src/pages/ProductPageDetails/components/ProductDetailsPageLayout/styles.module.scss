@@ -5,38 +5,52 @@
     margin-bottom: 100px;
   }
 
-  &Title {
-    text-transform: uppercase;
-    font-size: 28px;
-    color: rgba(100, 64, 208, 1);
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
   &Product {
     display: flex;
     gap: 30px;
   }
 
+  &Image {
+    max-width: 500px;
+    width: 100%;
+  }
+
   &Img {
-    max-width: 400px;
-    min-height: 400px;
+    object-fit: contain;
   }
 
   &ProductDetails {
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
   }
 
   &ProductTitle {
     text-transform: uppercase;
-    font-size: 26px;
-    color: #6440d0;
+    font-size: 24px;
+    color: #a84d98;
     margin-bottom: 20px;
   }
 
   &ProductDescription {
+    color: rgba(0, 0, 0, 0.7);
     font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  &ProductRating {
+    margin-bottom: 20px;
+  }
+
+  &ProductDiscount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #50af31;
     margin-bottom: 20px;
   }
 
@@ -62,14 +76,10 @@
 
 @media(max-width: 767px) {
   .wrapper {
-    padding: 30px 0;
+    padding: 40px 0;
 
     &Slider {
       margin-bottom: 30px;
-    }
-
-    &Title {
-      font-size: 26px;
     }
 
     &Product {
@@ -77,9 +87,8 @@
       gap: 20px;
     }
 
-    &Img {
-      margin: 0 auto;
-      max-width: 400px;
+    &Image {
+      align-self: center;
       min-height: auto;
     }
 
@@ -90,20 +99,32 @@
 
     &ProductTitle {
       text-align: center;
-      font-size: 24px;
+      font-size: 22px;
+      margin-bottom: 15px;
     }
 
     &ProductDescription {
       font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    &ProductDiscount {
+      margin-bottom: 15px;
+    }
+
+    &ProductRating {
+      margin-bottom: 15px;
     }
 
     &ProductStock {
       width: 100%;
       margin-top: auto;
+      margin-bottom: 15px;
     }
 
     &ProductPrice {
       margin-top: auto;
+      margin-bottom: 15px;
     }
 
     &Footer {
@@ -118,12 +139,10 @@
 
 @media(max-width: 490px) {
   .wrapper {
+    padding: 30px 0;
+
     &Slider {
       margin-bottom: 20px;
-    }
-
-    &Title {
-      font-size: 24px;
     }
 
     &Product {
@@ -131,21 +150,29 @@
     }
 
     &ProductTitle {
-      font-size: 22px;
-      margin-bottom: 15px;
+      font-size: 20px;
+      margin-bottom: 10px;
     }
 
     &ProductDescription {
       font-size: 18px;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+    }
+
+    &ProductDiscount {
+      margin-bottom: 10px;
+    }
+
+    &ProductRating {
+      margin-bottom: 10px;
     }
 
     &ProductStock {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     &ProductPrice {
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
   }
 }
