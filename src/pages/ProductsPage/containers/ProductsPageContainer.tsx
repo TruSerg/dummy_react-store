@@ -1,20 +1,12 @@
-import { FC, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../hooks/useStoreHooks";
+import { FC } from "react";
 
 import { useGetProductsQuery } from "../../../store/dummyStoreAPI/dummyStore.api";
-import { getProductDetails } from "../../../store/productDetailsSlice";
 
-import { usePagination } from "../../../hooks";
-
-import { ROUTES } from "../../../routes/routeNames";
+import { usePagination, useProductsDetails } from "../../../hooks";
 
 import ProductsPageLayout from "../components/ProductsPageLayout";
 
 const ProductsPageContainer: FC = () => {
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
   const {
     data: products,
     isLoading: isProductsLoading,
@@ -22,23 +14,10 @@ const ProductsPageContainer: FC = () => {
     error,
   } = useGetProductsQuery();
 
-  const {
-    list,
-    isPageLoading,
-    currentPage,
-    pageCount,
-    firstProductsIndex,
-    handlePageChange,
-  } = usePagination(products);
+  const { list, isPageLoading, currentPage, pageCount, handlePageChange } =
+    usePagination(products);
 
-  const handleGetProductDetails = useCallback(
-    (productId: number) => {
-      dispatch(getProductDetails(productId));
-
-      navigate(ROUTES.PRODUCT_PAGE_DETAILS);
-    },
-    [dispatch, navigate]
-  );
+  const { handleGetProductDetails } = useProductsDetails();
 
   return (
     <ProductsPageLayout

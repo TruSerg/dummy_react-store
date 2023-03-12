@@ -1,7 +1,5 @@
 import React, { FC, memo } from "react";
 
-import style from "./styles.module.scss";
-
 interface DiscountProps {
   value: number;
   className: string;

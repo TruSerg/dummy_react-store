@@ -9,10 +9,10 @@ import Loader from "../../../../components/Loader";
 import ProductPrice from "../../../../components/ProductPrice";
 import ProductStock from "../../../../components/ProductStock";
 import Title from "../../../../components/Title";
-
-import style from "./styles.module.scss";
 import Rating from "../../../../components/Rating";
 import Discount from "../../../../components/Discount";
+
+import style from "./styles.module.scss";
 
 interface ProductDetailsPageProps {
   product: IProduct;

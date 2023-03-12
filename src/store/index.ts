@@ -2,6 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { dummyStoreAPI } from "./dummyStoreAPI/dummyStore.api";
 import productDetailsReducer from "./productDetailsSlice";
+import categoriesReducer from "./categoriesSlice";
+import productsCategoryReducer from "./productsCategorySlice";
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -11,6 +13,8 @@ export const store = configureStore({
   reducer: {
     [dummyStoreAPI.reducerPath]: dummyStoreAPI.reducer,
     productDetails: productDetailsReducer,
+    categories: categoriesReducer,
+    productsCategory: productsCategoryReducer,
   },
 });
 

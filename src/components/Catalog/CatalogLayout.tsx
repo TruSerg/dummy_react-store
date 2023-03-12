@@ -1,21 +1,28 @@
 import React, { FC, MouseEvent } from "react";
+import { Link } from "react-router-dom";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { IconButton, Menu, MenuItem } from "@mui/material";
+
+import { ROUTES } from "../../routes/routeNames";
 
 import style from "./styles.module.scss";
 
 interface CatalogProps {
+  categories: string[];
   isOpen: boolean;
   anchorEl: HTMLElement | null;
   handleClick: (event: MouseEvent<HTMLElement>) => void;
   handleClose: () => void;
+  handleGetProductsCategory: (category: string) => void;
 }
 
 const CatalogLayout: FC<CatalogProps> = ({
+  categories,
   anchorEl,
   isOpen,
   handleClick,
   handleClose,
+  handleGetProductsCategory,
 }) => {
   return (
     <>
@@ -39,11 +46,17 @@ const CatalogLayout: FC<CatalogProps> = ({
           "aria-labelledby": "basic-button",
         }}
       >
-        <>
-          <MenuItem className={style.catalogItem} onClick={handleClose}>
-            Item
-          </MenuItem>
-        </>
+        {categories?.map((category) => (
+          <Link
+            key={category}
+            onClick={() => handleGetProductsCategory(category)}
+            to={ROUTES.PRODUCTS_CATEGORY_PAGE}
+          >
+            <MenuItem className={style.catalogItem} onClick={handleClose}>
+              {category}
+            </MenuItem>
+          </Link>
+        ))}
       </Menu>
     </>
   );

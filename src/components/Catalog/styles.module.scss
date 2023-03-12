@@ -3,19 +3,19 @@
   border: 1px solid #fff;
   padding: 5px;
   margin-top: 5px;
-  transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out !important;
 
   &:hover {
-    color: #90c6fe;
-    border: 1px solid #90c6fe;
+    color: #1a8ec1;
+    border: 1px solid #1a8ec1;
   }
 }
 
 .catalogItem {
-  color: #7db122 !important;
+  color: #838383 !important;
   text-transform: uppercase !important;
 
   &:hover {
-    color: #0066ff !important;
+    color: #1a8ec1 !important;
   }
 }

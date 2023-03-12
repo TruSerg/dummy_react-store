@@ -1,27 +1,42 @@
-import { MouseEvent } from "react";
-import { useState } from "react";
+import { useCallback, useEffect } from "react";
 import { memo } from "react";
+
+import { getCategories, getCategory } from "../../store/categoriesSlice";
+import { getProductsCategory } from "../../store/productsCategorySlice";
+
+import { useAppDispatch, useAppSelector } from "../../hooks/useStoreHooks";
+import { useCatalog } from "../../hooks";
 
 import CatalogLayout from "./CatalogLayout";
 
 const Catalog = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const isOpen = Boolean(anchorEl);
+  const dispatch = useAppDispatch();
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const { anchorEl, isCatalogOpen, handleCatalogClick, handleCatalogClose } =
+    useCatalog();
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const { categories } = useAppSelector((state) => state.categories);
+
+  const handleGetProductsCategory = useCallback(
+    (category: string) => {
+      dispatch(getProductsCategory(category));
+      dispatch(getCategory(category));
+    },
+    [dispatch]
+  );
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <CatalogLayout
+      categories={categories}
       anchorEl={anchorEl}
-      isOpen={isOpen}
-      handleClick={handleClick}
-      handleClose={handleClose}
+      isOpen={isCatalogOpen}
+      handleClick={handleCatalogClick}
+      handleClose={handleCatalogClose}
+      handleGetProductsCategory={handleGetProductsCategory}
     />
   );
 };

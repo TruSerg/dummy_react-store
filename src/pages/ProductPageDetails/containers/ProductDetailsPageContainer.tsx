@@ -7,8 +7,6 @@ const ProductDetailsPageContainer = () => {
     (state) => state.productDetails
   );
 
-  console.log(product);
-
   return <ProductDetailsPageLayout product={product} isLoading={isLoading} />;
 };
 
