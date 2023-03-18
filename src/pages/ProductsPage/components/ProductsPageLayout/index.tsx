@@ -6,9 +6,9 @@ import Container from "../../../../components/Container";
 import ProductCard from "../../../../components/ProductCard";
 import BasicPagination from "../../../../components/Pagination";
 import Loader from "../../../../components/Loader";
+import Title from "../../../../components/Title";
 
 import style from "./styles.module.scss";
-import Title from "../../../../components/Title";
 
 interface ProductsPageProps {
   products: IProduct[] | undefined;

@@ -4,6 +4,7 @@ import { dummyStoreAPI } from "./dummyStoreAPI/dummyStore.api";
 import productDetailsReducer from "./productDetailsSlice";
 import categoriesReducer from "./categoriesSlice";
 import productsCategoryReducer from "./productsCategorySlice";
+import searchProductReducer from "./searchProductSlice";
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -15,6 +16,7 @@ export const store = configureStore({
     productDetails: productDetailsReducer,
     categories: categoriesReducer,
     productsCategory: productsCategoryReducer,
+    searchProduct: searchProductReducer,
   },
 });
 

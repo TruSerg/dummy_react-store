@@ -1,8 +1,10 @@
 .catalog {
   color: #fff;
   border: 1px solid #fff;
+  border-radius: 6px;
+  width: 40px !important;
+  height: 40px !important;
   padding: 5px;
-  margin-top: 5px;
   transition: all .3s ease-in-out !important;
 
   &:hover {

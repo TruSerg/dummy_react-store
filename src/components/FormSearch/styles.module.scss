@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+
+  &Icon {
+    position: absolute;
+    fill: #838383;
+    width: 14px;
+    height: 14px;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &Input {
+    width: 100%;
+    min-height: 40px;
+    border-radius: 6px;
+    padding: 8px 20px 8px 50px;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    color: #838383;
+  }
+}
+
+@media (max-width: 490px) {
+  .form {
+    &Icon {
+      left: 10px;
+    }
+
+    &Input {
+      padding: 8px 8px 8px 35px;
+    }
+  }
+}
