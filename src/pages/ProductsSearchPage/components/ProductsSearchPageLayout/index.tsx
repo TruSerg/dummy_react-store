@@ -6,34 +6,43 @@ import Loader from "../../../../components/Loader";
 import Title from "../../../../components/Title";
 import Container from "../../../../components/Container";
 import ProductCard from "../../../../components/ProductCard";
-
-import style from "./styles.module.scss";
+import BasicPagination from "../../../../components/Pagination";
 import NotFoundComponent from "../../../../components/NotFoundComponent";
 
-interface ProductsCategoryProps {
-  products: IProduct[];
-  category: string;
+import style from "./styles.module.scss";
+
+interface ProductsSearchPageProps {
+  products: IProduct[] | undefined;
+  itemsQuantity: number;
   isLoading: boolean;
+  isPageLoading: boolean;
+  currentPage: number;
+  pageCount: number;
+  handlePageChange: (page: number) => void;
   handleGetProductDetails: (id: number) => void;
 }
 
-const ProductsCategoryPageLayout: FC<ProductsCategoryProps> = ({
+const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
   products,
-  category,
+  itemsQuantity,
   isLoading,
+  isPageLoading,
+  currentPage,
+  pageCount,
+  handlePageChange,
   handleGetProductDetails,
 }) => {
   return (
     <div className={style.products}>
-      {products === undefined ? (
-        <NotFoundComponent title={"Category not found !"} />
+      {itemsQuantity === 0 || itemsQuantity === undefined ? (
+        <NotFoundComponent title={"Nothing found !"} />
       ) : (
         <>
-          {isLoading ? (
+          {isLoading || isPageLoading ? (
             <Loader />
           ) : (
             <>
-              <Title title={category} />
+              <Title title={`Found ${itemsQuantity} items`} />
               <Container>
                 <div className={style.productsArea}>
                   <div className={style.productsWrapper}>
@@ -62,6 +71,16 @@ const ProductsCategoryPageLayout: FC<ProductsCategoryProps> = ({
                       )
                     )}
                   </div>
+
+                  {itemsQuantity >= 10 && (
+                    <div className={style.productsPagination}>
+                      <BasicPagination
+                        pageCount={pageCount}
+                        currentPage={currentPage}
+                        handlePageChange={handlePageChange}
+                      />
+                    </div>
+                  )}
                 </div>
               </Container>
             </>
@@ -72,4 +91,4 @@ const ProductsCategoryPageLayout: FC<ProductsCategoryProps> = ({
   );
 };
 
-export default ProductsCategoryPageLayout;
+export default ProductsSearchPageLayout;

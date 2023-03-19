@@ -1,11 +1,8 @@
-import { FC, memo, useState } from "react";
+import { FC, memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 
 import "swiper/scss";
-
-import SliderButtonNext from "../Buttons/SliderButtons/SliderButtonNext";
-import SliderButtonPrev from "../Buttons/SliderButtons/SliderButtonPrev";
 
 import style from "./styles.module.scss";
 
@@ -14,14 +11,10 @@ interface SliderProps {
 }
 
 const Slider: FC<SliderProps> = ({ images }) => {
-  // const [isVisibleButton, setIsVisibleButton] = useState(true);
-
   return (
     <Swiper
       grabCursor={true}
       modules={[Navigation]}
-      // onReachEnd={() => setIsVisibleButtonNext(false)}
-      // onReachBeginning={() => setIsVisibleButtonNext(false)}
       breakpoints={{
         1336: {
           slidesPerView: 5,
@@ -40,10 +33,6 @@ const Slider: FC<SliderProps> = ({ images }) => {
         },
       }}
     >
-      <SliderButtonNext className={style.sliderButtonNext} />
-
-      <SliderButtonPrev className={style.sliderButtonPrev} />
-
       {images?.map((imgUrl, index) => (
         <SwiperSlide className={style.imageSlide} key={index}>
           <div className={style.slideImg}>

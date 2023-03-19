@@ -4,12 +4,12 @@ import sprite from "../../static/sprite.svg";
 
 import style from "./styles.module.scss";
 
-interface FormSearchProps {
+interface SearchInputProps {
   inputValue: string;
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormSearch: FC<FormSearchProps> = ({ inputValue, handleChange }) => {
+const SearchInput: FC<SearchInputProps> = ({ inputValue, handleChange }) => {
   return (
     <div className={style.form}>
       <svg className={style.formIcon}>
@@ -26,4 +26,4 @@ const FormSearch: FC<FormSearchProps> = ({ inputValue, handleChange }) => {
   );
 };
 
-export default memo(FormSearch);
+export default memo(SearchInput);

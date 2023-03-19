@@ -1,6 +1,6 @@
 .catalog {
-  color: #fff;
-  border: 1px solid #fff;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.7);
   border-radius: 6px;
   width: 40px !important;
   height: 40px !important;
@@ -8,8 +8,8 @@
   transition: all .3s ease-in-out !important;
 
   &:hover {
-    color: #1a8ec1;
-    border: 1px solid #1a8ec1;
+    color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 1);
   }
 }
 

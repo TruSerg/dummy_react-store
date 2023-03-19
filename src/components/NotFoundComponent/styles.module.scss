@@ -1,0 +1,22 @@
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-size: 35px;
+  font-weight: 600;
+  color: #a84d98;
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 490px) {
+  .title {
+    font-size: 25px;
+  }
+}

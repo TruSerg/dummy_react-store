@@ -1,7 +1,7 @@
 import { useAppSelector } from "../../../hooks/useStoreHooks";
+import { useProductsDetails } from "../../../hooks";
 
 import ProductsCategoryPageLayout from "../components/ProductsCategoryPageLayout";
-import { useProductsDetails } from "../../../hooks";
 
 const ProductsCategoryPageContainer = () => {
   const { isLoading, productsCategory } = useAppSelector(

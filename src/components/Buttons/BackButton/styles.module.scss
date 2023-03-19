@@ -1,0 +1,32 @@
+.button {
+  padding: 20px 0;
+
+  &Icon {
+    font-size: 30px !important;
+    color: #1a8ec1 !important;
+    transition: color .3s ease-in-out;
+
+    &:hover {
+      color: #50af31 !important;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .button {
+    &Icon {
+      font-size: 25px !important;
+    }
+  }
+}
+
+@media (max-width: 490px) {
+  .button {
+    padding: 15px 0;
+
+    &Icon{
+      font-size: 20px !important;
+    }
+  }
+}
+

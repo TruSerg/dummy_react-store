@@ -3,10 +3,10 @@
 }
 
 .iconCart {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.7);
   transition: color .3s ease-in-out;
 
   &:hover {
-    color: #1a8ec1;
+    color: rgba(255, 255, 255, 1);
   }
 }

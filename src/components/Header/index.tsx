@@ -1,4 +1,5 @@
 import { FC, memo, useCallback, ChangeEvent, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   productSearchValueChange,
@@ -6,17 +7,20 @@ import {
 } from "../../store/searchProductSlice";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/useStoreHooks";
+import { useDebounce } from "../../hooks";
+
+import { ROUTES } from "../../routes/routeNames";
 
 import Container from "../Container";
 import Catalog from "../Catalog/Catalog";
 import CartIconButton from "../Buttons/CartIconButton";
-import FormSearch from "../FormSearch";
+import SearchInput from "../SearchInput";
 
 import style from "./styles.module.scss";
-import { useDebounce } from "../../hooks";
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const { productSearchValue } = useAppSelector((state) => state.searchProduct);
 
@@ -26,14 +30,16 @@ const Header: FC = () => {
     (e: ChangeEvent<HTMLInputElement>) => {
       dispatch(productSearchValueChange(e.target.value));
     },
-    [productSearchValue]
+    [dispatch]
   );
 
   useEffect(() => {
-    if (debounced.trim().toLowerCase() !== "") {
-      dispatch(searchProduct(productSearchValue));
+    if (debounced !== "") {
+      dispatch(searchProduct(productSearchValue.trim().toLowerCase()));
+
+      navigate(ROUTES.PRODUCTS_SEARCH_PAGE);
     }
-  }, [productSearchValue, debounced]);
+  }, [dispatch, navigate, productSearchValue, debounced]);
 
   return (
     <header className={style.header}>
@@ -41,7 +47,7 @@ const Header: FC = () => {
         <div className={style.headerWrapper}>
           <div className={style.headerItem}>
             <Catalog />
-            <FormSearch
+            <SearchInput
               inputValue={productSearchValue}
               handleChange={handleProductSearchChange}
             />

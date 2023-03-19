@@ -5,6 +5,7 @@ import { ROUTES } from "./routeNames";
 import ProductsPageContainer from "../pages/ProductsPage/containers/ProductsPageContainer";
 import ProductDetailsPageContainer from "../pages/ProductPageDetails/containers/ProductDetailsPageContainer";
 import ProductsCategoryPageContainer from "../pages/ProductsCategoryPage/containers/ProductsCategoryPageContainer";
+import ProductsSearchPageContainer from "../pages/ProductsSearchPage/containers/ProductsSearchPageContainer";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,10 @@ const AppRoutes = () => {
       <Route
         path={ROUTES.PRODUCTS_CATEGORY_PAGE}
         element={<ProductsCategoryPageContainer />}
+      />
+      <Route
+        path={ROUTES.PRODUCTS_SEARCH_PAGE}
+        element={<ProductsSearchPageContainer />}
       />
 
       <Route path="*" element={<Navigate to={ROUTES.PRODUCTS_PAGE} />} />
