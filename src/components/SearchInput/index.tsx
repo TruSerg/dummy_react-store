@@ -5,11 +5,16 @@ import sprite from "../../static/sprite.svg";
 import style from "./styles.module.scss";
 
 interface SearchInputProps {
-  inputValue: string;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  productSearchValue: string;
+  handleProductSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  checkInputSearchFocus: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchInput: FC<SearchInputProps> = ({ inputValue, handleChange }) => {
+const SearchInput: FC<SearchInputProps> = ({
+  productSearchValue,
+  handleProductSearchChange,
+  checkInputSearchFocus,
+}) => {
   return (
     <div className={style.form}>
       <svg className={style.formIcon}>
@@ -18,9 +23,10 @@ const SearchInput: FC<SearchInputProps> = ({ inputValue, handleChange }) => {
       <input
         className={style.formInput}
         placeholder="Search..."
-        value={inputValue}
+        value={productSearchValue}
         type="text"
-        onChange={handleChange}
+        onChange={handleProductSearchChange}
+        onBlur={checkInputSearchFocus}
       />
     </div>
   );

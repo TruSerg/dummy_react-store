@@ -12,30 +12,31 @@ import style from "./styles.module.scss";
 
 interface ProductsPageProps {
   products: IProduct[] | undefined;
-  error: any;
   isProductsLoading: boolean;
   isPageLoading: boolean;
-  isError: boolean;
   currentPage: number;
   pageCount: number;
   handlePageChange: (page: number) => void;
   handleGetProductDetails: (id: number) => void;
+  handleAddProductToCart: (id: number) => void;
+  handleGoToCart: () => void;
+  isAddItemToCart: (id: number) => boolean;
 }
 
 const ProductsPageLayout: FC<ProductsPageProps> = ({
   products,
-  error,
   isProductsLoading,
   isPageLoading,
-  isError,
   currentPage,
   pageCount,
   handlePageChange,
   handleGetProductDetails,
+  handleAddProductToCart,
+  handleGoToCart,
+  isAddItemToCart,
 }) => {
   return (
     <div className={style.products}>
-      {isError && <h2>{error.error}</h2>}
       {isProductsLoading || isPageLoading ? (
         <Loader />
       ) : (
@@ -56,6 +57,7 @@ const ProductsPageLayout: FC<ProductsPageProps> = ({
                   }) => (
                     <ProductCard
                       key={id}
+                      id={id}
                       brand={brand}
                       title={title}
                       price={price}
@@ -65,6 +67,9 @@ const ProductsPageLayout: FC<ProductsPageProps> = ({
                       handleGetProductDetails={() =>
                         handleGetProductDetails(id)
                       }
+                      handleAddProductToCart={() => handleAddProductToCart(id)}
+                      handleGoToCart={handleGoToCart}
+                      isAddItemToCart={isAddItemToCart}
                     />
                   )
                 )}

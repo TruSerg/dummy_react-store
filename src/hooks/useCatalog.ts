@@ -1,6 +1,6 @@
 import { MouseEvent, useState } from "react";
 
-const UseCatalog = () => {
+const useCatalog = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const isCatalogOpen = Boolean(anchorEl);
 
@@ -15,4 +15,4 @@ const UseCatalog = () => {
   return { anchorEl, isCatalogOpen, handleCatalogClick, handleCatalogClose };
 };
 
-export default UseCatalog;
+export default useCatalog;

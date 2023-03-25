@@ -1,14 +1,14 @@
 import { FC, memo } from "react";
 
-import Button from "../Buttons/Button";
 import ProductPrice from "../ProductPrice";
 import ProductStock from "../ProductStock";
-
-import style from "./styles.module.scss";
 import Discount from "../Discount";
 
+import style from "./styles.module.scss";
+import CommonButton from "../Buttons/CommonButton";
+
 interface ProductCardProps {
-  id?: number;
+  id: number;
   brand: string;
   title: string;
   price: number;
@@ -16,9 +16,13 @@ interface ProductCardProps {
   thumbnail: string;
   discountPercentage: number;
   handleGetProductDetails: () => void;
+  handleAddProductToCart: () => void;
+  handleGoToCart: () => void;
+  isAddItemToCart: (id: number) => boolean;
 }
 
 const ProductCard: FC<ProductCardProps> = ({
+  id,
   brand,
   title,
   price,
@@ -26,6 +30,9 @@ const ProductCard: FC<ProductCardProps> = ({
   thumbnail,
   discountPercentage,
   handleGetProductDetails,
+  handleAddProductToCart,
+  handleGoToCart,
+  isAddItemToCart,
 }) => {
   return (
     <div className={style.productCard} onClick={handleGetProductDetails}>
@@ -42,9 +49,16 @@ const ProductCard: FC<ProductCardProps> = ({
         <ProductStock stock={stock} />
       </div>
       <div className={style.productCardPrice}>
-        <ProductPrice price={price} />
+        <ProductPrice title={"Price:"} price={price} />
       </div>
-      <Button title={"Add to cart"} />
+      {isAddItemToCart(id) ? (
+        <CommonButton handleClick={handleGoToCart} title={"Go to cart"} />
+      ) : (
+        <CommonButton
+          handleClick={handleAddProductToCart}
+          title={"Add to cart"}
+        />
+      )}
     </div>
   );
 };

@@ -1,38 +1,47 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 import { IProduct } from "../../../../services/products";
 
+import { ROUTES } from "../../../../routes/routeNames";
+
 import Container from "../../../../components/Container";
 import Slider from "../../../../components/Slider";
-import Button from "../../../../components/Buttons/Button";
 import Loader from "../../../../components/Loader";
 import ProductPrice from "../../../../components/ProductPrice";
 import ProductStock from "../../../../components/ProductStock";
 import Title from "../../../../components/Title";
-import Rating from "../../../../components/Rating";
+import BasicRating from "../../../../components/Rating";
 import Discount from "../../../../components/Discount";
 import BackButton from "../../../../components/Buttons/BackButton";
+import NotFoundComponent from "../../../../components/NotFoundComponent";
+import CommonButton from "../../../../components/Buttons/CommonButton";
 
 import style from "./styles.module.scss";
-import NotFoundComponent from "../../../../components/NotFoundComponent";
 
 interface ProductDetailsPageProps {
   product: IProduct;
   isLoading: boolean;
+  handleAddProductToCart: (id: number) => void;
+  handleGoToCart: () => void;
+  isAddItemToCart: (id: number) => boolean;
 }
 
 const ProductDetailsPageLayout: FC<ProductDetailsPageProps> = ({
   product,
   isLoading,
+  handleAddProductToCart,
+  handleGoToCart,
+  isAddItemToCart,
 }) => {
   return (
     <div className={style.wrapper}>
-      {product.title === undefined ? (
-        <NotFoundComponent title={"No details !"} />
+      {isLoading ? (
+        <Loader />
       ) : (
         <>
-          {isLoading ? (
-            <Loader />
+          {product.title === undefined ? (
+            <NotFoundComponent title={"No details!"} />
           ) : (
             <>
               <Title title={product.title} />
@@ -57,7 +66,7 @@ const ProductDetailsPageLayout: FC<ProductDetailsPageProps> = ({
                       {product.description}
                     </p>
                     <div className={style.wrapperProductRating}>
-                      <Rating value={product.rating} />
+                      <BasicRating value={product.rating} />
                     </div>
                     <Discount
                       className={style.wrapperProductDiscount}
@@ -68,10 +77,22 @@ const ProductDetailsPageLayout: FC<ProductDetailsPageProps> = ({
                         <ProductStock stock={product.stock} />
                       </div>
                       <div className={style.wrapperProductPrice}>
-                        <ProductPrice price={product.price} />
+                        <ProductPrice title={"Price"} price={product.price} />
                       </div>
                       <div className={style.wrapperBtn}>
-                        <Button title={"Add to cart"} />
+                        {isAddItemToCart(product.id) ? (
+                          <CommonButton
+                            handleClick={handleGoToCart}
+                            title={"Go to cart"}
+                          />
+                        ) : (
+                          <CommonButton
+                            handleClick={() =>
+                              handleAddProductToCart(product.id)
+                            }
+                            title={"Add to cart"}
+                          />
+                        )}
                       </div>
                     </div>
                   </div>

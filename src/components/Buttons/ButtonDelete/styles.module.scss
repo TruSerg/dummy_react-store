@@ -1,0 +1,24 @@
+.btnDelete {
+  background-color: #fff;
+  padding: 8px 15px;
+  border-radius: 50px;
+  color: #ed1c24;
+  max-width: 145px;
+  width: 100%;
+  border: 1px solid #ed1c24;
+  font-size: 18px;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background-color: #ed1c24;
+  }
+}
+
+@media(max-width: 490px) {
+  .btnDelete {
+    padding: 8px 15px;
+    max-width: 135px;
+    font-size: 16px;
+  }
+}

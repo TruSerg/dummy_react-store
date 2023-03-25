@@ -15,6 +15,9 @@ interface ProductsCategoryProps {
   category: string;
   isLoading: boolean;
   handleGetProductDetails: (id: number) => void;
+  handleAddProductToCart: (id: number) => void;
+  handleGoToCart: () => void;
+  isAddItemToCart: (id: number) => boolean;
 }
 
 const ProductsCategoryPageLayout: FC<ProductsCategoryProps> = ({
@@ -22,15 +25,18 @@ const ProductsCategoryPageLayout: FC<ProductsCategoryProps> = ({
   category,
   isLoading,
   handleGetProductDetails,
+  handleAddProductToCart,
+  handleGoToCart,
+  isAddItemToCart,
 }) => {
   return (
     <div className={style.products}>
-      {products === undefined ? (
-        <NotFoundComponent title={"Category not found !"} />
+      {isLoading ? (
+        <Loader />
       ) : (
         <>
-          {isLoading ? (
-            <Loader />
+          {products === undefined ? (
+            <NotFoundComponent title={"Category is not found!"} />
           ) : (
             <>
               <Title title={category} />
@@ -49,6 +55,7 @@ const ProductsCategoryPageLayout: FC<ProductsCategoryProps> = ({
                       }) => (
                         <ProductCard
                           key={id}
+                          id={id}
                           brand={brand}
                           title={title}
                           price={price}
@@ -58,6 +65,11 @@ const ProductsCategoryPageLayout: FC<ProductsCategoryProps> = ({
                           handleGetProductDetails={() =>
                             handleGetProductDetails(id)
                           }
+                          handleAddProductToCart={() =>
+                            handleAddProductToCart(id)
+                          }
+                          handleGoToCart={handleGoToCart}
+                          isAddItemToCart={isAddItemToCart}
                         />
                       )
                     )}

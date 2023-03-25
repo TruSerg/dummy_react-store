@@ -20,6 +20,9 @@ interface ProductsSearchPageProps {
   pageCount: number;
   handlePageChange: (page: number) => void;
   handleGetProductDetails: (id: number) => void;
+  handleAddProductToCart: (id: number) => void;
+  handleGoToCart: () => void;
+  isAddItemToCart: (id: number) => boolean;
 }
 
 const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
@@ -31,15 +34,18 @@ const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
   pageCount,
   handlePageChange,
   handleGetProductDetails,
+  handleAddProductToCart,
+  handleGoToCart,
+  isAddItemToCart,
 }) => {
   return (
     <div className={style.products}>
-      {itemsQuantity === 0 || itemsQuantity === undefined ? (
-        <NotFoundComponent title={"Nothing found !"} />
+      {isLoading || isPageLoading ? (
+        <Loader />
       ) : (
         <>
-          {isLoading || isPageLoading ? (
-            <Loader />
+          {itemsQuantity === 0 || itemsQuantity === undefined ? (
+            <NotFoundComponent title={"Product is not found!"} />
           ) : (
             <>
               <Title title={`Found ${itemsQuantity} items`} />
@@ -58,6 +64,7 @@ const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
                       }) => (
                         <ProductCard
                           key={id}
+                          id={id}
                           brand={brand}
                           title={title}
                           price={price}
@@ -67,6 +74,11 @@ const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
                           handleGetProductDetails={() =>
                             handleGetProductDetails(id)
                           }
+                          handleAddProductToCart={() =>
+                            handleAddProductToCart(id)
+                          }
+                          handleGoToCart={handleGoToCart}
+                          isAddItemToCart={isAddItemToCart}
                         />
                       )
                     )}

@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../../hooks/useStoreHooks";
-import { useProductsDetails } from "../../../hooks";
+import { useProductsDetails, useCart } from "../../../hooks";
 
 import ProductsCategoryPageLayout from "../components/ProductsCategoryPageLayout";
 
@@ -12,12 +12,17 @@ const ProductsCategoryPageContainer = () => {
 
   const { handleGetProductDetails } = useProductsDetails();
 
+  const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
+
   return (
     <ProductsCategoryPageLayout
       isLoading={isLoading}
       products={productsCategory.products}
       category={category}
       handleGetProductDetails={handleGetProductDetails}
+      handleAddProductToCart={handleAddProductToCart}
+      handleGoToCart={handleGoToCart}
+      isAddItemToCart={isAddItemToCart}
     />
   );
 };

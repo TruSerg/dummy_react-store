@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../../hooks/useStoreHooks";
-import { usePagination, useProductsDetails } from "../../../hooks";
+import { useCart, usePagination, useProductsDetails } from "../../../hooks";
 
 import ProductsSearchPageLayout from "../components/ProductsSearchPageLayout";
 
@@ -13,6 +13,8 @@ const ProductsSearchPageContainer = () => {
 
   const { handleGetProductDetails } = useProductsDetails();
 
+  const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
+
   return (
     <ProductsSearchPageLayout
       products={list}
@@ -23,6 +25,9 @@ const ProductsSearchPageContainer = () => {
       pageCount={pageCount}
       handlePageChange={handlePageChange}
       handleGetProductDetails={handleGetProductDetails}
+      handleAddProductToCart={handleAddProductToCart}
+      handleGoToCart={handleGoToCart}
+      isAddItemToCart={isAddItemToCart}
     />
   );
 };

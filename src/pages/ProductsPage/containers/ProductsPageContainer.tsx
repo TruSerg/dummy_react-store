@@ -1,21 +1,28 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 
-import { useGetProductsQuery } from "../../../store/dummyStoreAPI/dummyStore.api";
+import { getProducts } from "../../../store/productsSlice";
 
+import { useAppDispatch, useAppSelector } from "../../../hooks/useStoreHooks";
 import { usePagination, useProductsDetails } from "../../../hooks";
 
 import ProductsPageLayout from "../components/ProductsPageLayout";
+import useCart from "../../../hooks/useCart";
 
 const ProductsPageContainer: FC = () => {
-  const {
-    data: products,
-    isLoading: isProductsLoading,
-    isError,
-    error,
-  } = useGetProductsQuery();
+  const dispatch = useAppDispatch();
+
+  const { isLoading, productsResponse } = useAppSelector(
+    (state) => state.products
+  );
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
 
   const { list, isPageLoading, currentPage, pageCount, handlePageChange } =
-    usePagination(products);
+    usePagination(productsResponse.products);
+
+  const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
 
   const { handleGetProductDetails } = useProductsDetails();
 
@@ -23,13 +30,14 @@ const ProductsPageContainer: FC = () => {
     <ProductsPageLayout
       currentPage={currentPage}
       products={list}
-      error={error}
-      isProductsLoading={isProductsLoading}
+      isProductsLoading={isLoading}
       isPageLoading={isPageLoading}
-      isError={isError}
       pageCount={pageCount}
       handlePageChange={handlePageChange}
       handleGetProductDetails={handleGetProductDetails}
+      handleAddProductToCart={handleAddProductToCart}
+      handleGoToCart={handleGoToCart}
+      isAddItemToCart={isAddItemToCart}
     />
   );
 };

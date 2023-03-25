@@ -1,4 +1,5 @@
 import { useAppSelector } from "../../../hooks/useStoreHooks";
+import useCart from "../../../hooks/useCart";
 
 import ProductDetailsPageLayout from "../components/ProductDetailsPageLayout";
 
@@ -7,7 +8,17 @@ const ProductDetailsPageContainer = () => {
     (state) => state.productDetails
   );
 
-  return <ProductDetailsPageLayout product={product} isLoading={isLoading} />;
+  const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
+
+  return (
+    <ProductDetailsPageLayout
+      product={product}
+      isLoading={isLoading}
+      handleAddProductToCart={handleAddProductToCart}
+      handleGoToCart={handleGoToCart}
+      isAddItemToCart={isAddItemToCart}
+    />
+  );
 };
 
 export default ProductDetailsPageContainer;

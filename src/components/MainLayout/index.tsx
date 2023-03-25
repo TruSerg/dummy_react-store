@@ -1,7 +1,7 @@
 import React, { FC, memo } from "react";
 
 import style from "./styles.module.scss";
-import Header from "../Header";
+import Header from "../Header/Header";
 
 interface MainLayoutProps {
   children: React.ReactNode;

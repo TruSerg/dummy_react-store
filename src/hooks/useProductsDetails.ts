@@ -7,7 +7,7 @@ import { useAppDispatch } from "./useStoreHooks";
 
 import { ROUTES } from "../routes/routeNames";
 
-const UseProductsDetails = () => {
+const useProductsDetails = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const UseProductsDetails = () => {
     (productId: number) => {
       dispatch(getProductDetails(productId));
 
-      navigate(ROUTES.PRODUCT_PAGE_DETAILS);
+      navigate(ROUTES.PRODUCT_DETAILS_PAGE);
     },
     [dispatch, navigate]
   );
@@ -23,4 +23,4 @@ const UseProductsDetails = () => {
   return { handleGetProductDetails };
 };
 
-export default UseProductsDetails;
+export default useProductsDetails;

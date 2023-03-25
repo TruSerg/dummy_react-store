@@ -21,3 +21,15 @@
     color: #1a8ec1 !important;
   }
 }
+
+@media (max-width: 490px) {
+  .catalog {
+    width: 35px !important;
+    height: 35px !important;
+    padding: 3px;
+  }
+
+  .catalogItem {
+    font-size: 14px !important;
+  }
+}

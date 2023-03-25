@@ -5,6 +5,8 @@ import productDetailsReducer from "./productDetailsSlice";
 import categoriesReducer from "./categoriesSlice";
 import productsCategoryReducer from "./productsCategorySlice";
 import searchProductReducer from "./searchProductSlice";
+import productsReducer from "./productsSlice";
+import cartReducer from "./cartSlice";
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -13,10 +15,12 @@ export const store = configureStore({
     }).concat(dummyStoreAPI.middleware),
   reducer: {
     [dummyStoreAPI.reducerPath]: dummyStoreAPI.reducer,
+    products: productsReducer,
     productDetails: productDetailsReducer,
     categories: categoriesReducer,
     productsCategory: productsCategoryReducer,
     searchProduct: searchProductReducer,
+    cart: cartReducer,
   },
 });
 

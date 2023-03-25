@@ -10,3 +10,9 @@
     color: rgba(255, 255, 255, 1);
   }
 }
+
+@media (max-width: 490px) {
+  .cartIcon {
+    font-size: 30px !important;
+  }
+}

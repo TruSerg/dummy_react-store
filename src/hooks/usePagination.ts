@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { IProduct } from "../services/products";
 
-const UsePagination = (array: IProduct[] | undefined) => {
+const usePagination = (array: IProduct[] | undefined) => {
   const [list, setList] = useState<IProduct[]>();
   const [isPageLoading, setIsPageLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,7 +16,7 @@ const UsePagination = (array: IProduct[] | undefined) => {
   const currentList = array?.slice(firstProductsIndex, lastProductsIndex);
 
   useEffect(() => {
-    setTimeout(() => {
+    const pagination = setTimeout(() => {
       setIsPageLoading(false);
       setList(currentList);
 
@@ -24,6 +24,10 @@ const UsePagination = (array: IProduct[] | undefined) => {
         setPageCount(Math.ceil(array.length / perPage));
       }
     }, 500);
+
+    return () => {
+      clearTimeout(pagination);
+    };
   }, [currentPage, array, perPage]);
 
   const handlePageChange = useCallback(
@@ -46,4 +50,4 @@ const UsePagination = (array: IProduct[] | undefined) => {
   };
 };
 
-export default UsePagination;
+export default usePagination;
