@@ -2,6 +2,19 @@
   padding: 20px 0;
   background-color: #37424e;
 
+  &Logo {
+    display: inline-block;
+    color: #50af31;
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: color .3s ease-in-out;
+
+    &:hover {
+      color: #44e00e;
+    }
+  }
+
   &Wrapper {
     display: grid;
     grid-template-columns: 55px 43% 1fr 5%;
@@ -15,7 +28,7 @@
 
   &Link {
     justify-self: center;
-    font-size: 20px;
+    font-size: 22px;
     color: rgba(255, 255, 255, 0.7);
     transition: color .3s ease-in-out;
 
@@ -31,6 +44,10 @@
 
 @media(max-width: 767px) {
   .header {
+    &Logo {
+      font-size: 24px;
+    }
+
     &Wrapper {
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -48,14 +65,7 @@
     }
 
     &Link {
-      justify-self: center;
-      font-size: 22px;
-      color: rgba(255, 255, 255, 0.7);
-      transition: color .3s ease-in-out;
-
-      &:hover {
-        color: rgba(255, 255, 255, 1);
-      }
+      font-size: 20px;
     }
 
     &CartButton {
@@ -68,6 +78,10 @@
 @media(max-width: 490px) {
   .header {
     padding: 15px 0;
+
+    &Logo {
+      font-size: 22px;
+    }
 
     &Wrapper {
       grid-template-columns: repeat(3, 1fr);

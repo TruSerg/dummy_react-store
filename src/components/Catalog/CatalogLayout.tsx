@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent } from "react";
+import { FC, MouseEvent } from "react";
 import { Link } from "react-router-dom";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { IconButton, Menu, MenuItem } from "@mui/material";

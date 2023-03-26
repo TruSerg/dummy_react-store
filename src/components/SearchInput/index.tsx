@@ -7,12 +7,14 @@ import style from "./styles.module.scss";
 interface SearchInputProps {
   productSearchValue: string;
   handleProductSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  checkInputSearchBlur: (e: ChangeEvent<HTMLInputElement>) => void;
   checkInputSearchFocus: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchInput: FC<SearchInputProps> = ({
   productSearchValue,
   handleProductSearchChange,
+  checkInputSearchBlur,
   checkInputSearchFocus,
 }) => {
   return (
@@ -26,7 +28,8 @@ const SearchInput: FC<SearchInputProps> = ({
         value={productSearchValue}
         type="text"
         onChange={handleProductSearchChange}
-        onBlur={checkInputSearchFocus}
+        onBlur={checkInputSearchBlur}
+        onFocus={checkInputSearchFocus}
       />
     </div>
   );

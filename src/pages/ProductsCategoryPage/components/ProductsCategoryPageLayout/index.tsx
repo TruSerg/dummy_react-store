@@ -6,9 +6,9 @@ import Loader from "../../../../components/Loader";
 import Title from "../../../../components/Title";
 import Container from "../../../../components/Container";
 import ProductCard from "../../../../components/ProductCard";
+import NotFoundComponent from "../../../../components/NotFoundComponent";
 
 import style from "./styles.module.scss";
-import NotFoundComponent from "../../../../components/NotFoundComponent";
 
 interface ProductsCategoryProps {
   products: IProduct[];

@@ -45,7 +45,7 @@ const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
       ) : (
         <>
           {itemsQuantity === 0 || itemsQuantity === undefined ? (
-            <NotFoundComponent title={"Product is not found!"} />
+            <NotFoundComponent title={"Nothing found!"} />
           ) : (
             <>
               <Title title={`Found ${itemsQuantity} items`} />

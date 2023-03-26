@@ -1,13 +1,10 @@
-import { memo, useCallback, ChangeEvent, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import {
-  productSearchValueChange,
-  searchProduct,
-} from "../../store/searchProductSlice";
+import { searchProduct } from "../../store/searchProductSlice";
 
 import { useAppDispatch, useAppSelector } from "../../hooks/useStoreHooks";
-import { useDebounce } from "../../hooks";
+import { useDebounce, useSearch } from "../../hooks";
 
 import { ROUTES } from "../../routes/routeNames";
 
@@ -20,30 +17,26 @@ const Header = () => {
   const { productSearchValue } = useAppSelector((state) => state.searchProduct);
 
   const debouncedSearchProductValue = useDebounce(productSearchValue);
-
-  const handleProductSearchChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      dispatch(productSearchValueChange(e.target.value));
-    },
-    [dispatch]
-  );
-
-  const checkInputSearchFocus = useCallback(() => {
-    dispatch(productSearchValueChange(""));
-  }, [dispatch]);
+  const {
+    isFocus,
+    handleProductSearchChange,
+    checkInputSearchBlur,
+    checkInputSearchFocus,
+  } = useSearch();
 
   useEffect(() => {
-    if (debouncedSearchProductValue !== "") {
+    if (isFocus && debouncedSearchProductValue !== "") {
       dispatch(searchProduct(debouncedSearchProductValue.trim().toLowerCase()));
 
       navigate(ROUTES.PRODUCTS_SEARCH_PAGE);
     }
-  }, [dispatch, navigate, debouncedSearchProductValue]);
+  }, [dispatch, navigate, debouncedSearchProductValue, isFocus]);
 
   return (
     <HeaderLayout
       productSearchValue={productSearchValue}
       handleProductSearchChange={handleProductSearchChange}
+      checkInputSearchBlur={checkInputSearchBlur}
       checkInputSearchFocus={checkInputSearchFocus}
     />
   );

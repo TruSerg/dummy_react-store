@@ -13,17 +13,27 @@ import style from "./styles.module.scss";
 interface HeaderProps {
   productSearchValue: string;
   handleProductSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  checkInputSearchBlur: () => void;
   checkInputSearchFocus: () => void;
 }
 
 const HeaderLayout: FC<HeaderProps> = ({
   productSearchValue,
   handleProductSearchChange,
+  checkInputSearchBlur,
   checkInputSearchFocus,
 }) => {
   return (
     <header className={style.header}>
       <Container>
+        <a
+          href="https://dummyjson.com"
+          target="_blank"
+          rel="noreferrer"
+          className={style.headerLogo}
+        >
+          DUMMYstore.
+        </a>
         <div className={style.headerWrapper}>
           <div className={style.headerCatalog}>
             <Catalog />
@@ -32,6 +42,7 @@ const HeaderLayout: FC<HeaderProps> = ({
             <SearchInput
               productSearchValue={productSearchValue}
               handleProductSearchChange={handleProductSearchChange}
+              checkInputSearchBlur={checkInputSearchBlur}
               checkInputSearchFocus={checkInputSearchFocus}
             />
           </div>

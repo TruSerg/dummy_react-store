@@ -1,9 +1,9 @@
-import React, { memo, FC } from "react";
+import { ReactNode, memo, FC } from "react";
 
 import style from "./styles.module.scss";
 
 interface ContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const Container: FC<ContainerProps> = ({ children }) => {

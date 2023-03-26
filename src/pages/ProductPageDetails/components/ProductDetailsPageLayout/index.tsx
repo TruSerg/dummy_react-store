@@ -1,9 +1,6 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
 
 import { IProduct } from "../../../../services/products";
-
-import { ROUTES } from "../../../../routes/routeNames";
 
 import Container from "../../../../components/Container";
 import Slider from "../../../../components/Slider";
@@ -15,7 +12,8 @@ import BasicRating from "../../../../components/Rating";
 import Discount from "../../../../components/Discount";
 import BackButton from "../../../../components/Buttons/BackButton";
 import NotFoundComponent from "../../../../components/NotFoundComponent";
-import CommonButton from "../../../../components/Buttons/CommonButton";
+import GoToCartButton from "../../../../components/Buttons/GoToCartButton";
+import AddToCartButton from "../../../../components/Buttons/AddToCartButton";
 
 import style from "./styles.module.scss";
 
@@ -81,16 +79,12 @@ const ProductDetailsPageLayout: FC<ProductDetailsPageProps> = ({
                       </div>
                       <div className={style.wrapperBtn}>
                         {isAddItemToCart(product.id) ? (
-                          <CommonButton
-                            handleClick={handleGoToCart}
-                            title={"Go to cart"}
-                          />
+                          <GoToCartButton handleClick={handleGoToCart} />
                         ) : (
-                          <CommonButton
+                          <AddToCartButton
                             handleClick={() =>
                               handleAddProductToCart(product.id)
                             }
-                            title={"Add to cart"}
                           />
                         )}
                       </div>
