@@ -10,7 +10,7 @@ interface ProductPriceProps {
 const ProductPrice: FC<ProductPriceProps> = ({ title, price }) => {
   return (
     <p className={style.price}>
-      <span className={style.pricePoint}>{title}</span> {price}{" "}
+      <span className={style.pricePoint}>{title}</span> {price}
       <span className={style.priceCurrency}>$</span>
     </p>
   );

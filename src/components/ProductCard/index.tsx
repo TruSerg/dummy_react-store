@@ -4,7 +4,7 @@ import ProductPrice from "../ProductPrice";
 import ProductStock from "../ProductStock";
 import Discount from "../Discount";
 import GoToCartButton from "../Buttons/GoToCartButton";
-import AddToCartButton from "../Buttons/AddToCartButton";
+import CustomButton from "../Buttons/CustomButton";
 
 import style from "./styles.module.scss";
 
@@ -60,7 +60,10 @@ const ProductCard: FC<ProductCardProps> = ({
       {isAddItemToCart(id) ? (
         <GoToCartButton handleClick={handleGoToCart} />
       ) : (
-        <AddToCartButton handleClick={handleAddProductToCart} />
+        <CustomButton
+          title={"Add to cart"}
+          handleClick={handleAddProductToCart}
+        />
       )}
     </div>
   );

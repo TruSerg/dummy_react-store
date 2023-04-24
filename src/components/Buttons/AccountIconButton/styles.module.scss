@@ -1,0 +1,17 @@
+.account {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: color .3s ease-in-out !important;
+
+  &:hover {
+    color: rgba(255, 255, 255, 1) !important;
+  }
+
+  &Icon {
+    font-size: 35px !important;
+  }
+
+  &Name {
+    color: #50af31;
+  }
+}

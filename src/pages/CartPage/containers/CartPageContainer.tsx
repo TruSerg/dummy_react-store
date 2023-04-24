@@ -1,11 +1,14 @@
 import { useAppSelector } from "../../../hooks/useStoreHooks";
-import { useCart, useProductsDetails } from "../../../hooks";
+import { useCart, useProductsDetails, useMakeOrder } from "../../../hooks";
 
 import CartPageLayout from "../components/CartPageLayout";
 
 const CartPageContainer = () => {
   const { cartList, totalPrice } = useAppSelector((state) => state.cart);
 
+  console.log(cartList);
+
+  const { isModalOpen, handleModalClose, handleMakeUserOrder } = useMakeOrder();
   const {
     handleDeleteProductFromCart,
     handleProductQuantityIncrement,
@@ -16,12 +19,15 @@ const CartPageContainer = () => {
 
   return (
     <CartPageLayout
+      isModalOpen={isModalOpen}
       cartList={cartList}
       totalPrice={totalPrice}
+      handleModalClose={handleModalClose}
       handleGoToDetails={handleGetProductDetails}
       handleDeleteProductFromCart={handleDeleteProductFromCart}
       handleProductQuantityIncrement={handleProductQuantityIncrement}
       handleProductQuantityDecrement={handleProductQuantityDecrement}
+      handleMakeUserOrder={handleMakeUserOrder}
     />
   );
 };

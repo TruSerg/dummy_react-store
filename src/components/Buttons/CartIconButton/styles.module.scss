@@ -1,13 +1,10 @@
 .cartIcon {
   font-size: 35px !important;
-}
-
-.iconCart {
-  color: rgba(255, 255, 255, 0.7);
-  transition: color .3s ease-in-out;
+  color: rgba(255, 255, 255, 0.7) !important;
+  transition: color .3s ease-in-out !important;
 
   &:hover {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1) !important;
   }
 }
 

@@ -4,3 +4,6 @@ export { default as useProductsDetails } from "./useProductsDetails";
 export { default as useDebounce } from "./useDebounce";
 export { default as useCart } from "./useCart";
 export { default as useSearch } from "./useSearch";
+export { default as useForm } from "./useForm";
+export { default as useModal } from "./useModal";
+export { default as useMakeOrder } from "./useMakeOrder";

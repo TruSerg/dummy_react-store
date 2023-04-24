@@ -4,4 +4,6 @@ export const ROUTES = {
   PRODUCTS_CATEGORY_PAGE: "/category",
   PRODUCTS_SEARCH_PAGE: "/search",
   CART_PAGE: "/cart",
+  REGISTRATION_PAGE: "/signup",
+  USER_PAGE: "/user",
 };

@@ -16,7 +16,7 @@ const CartIconButton = () => {
     <Link to={ROUTES.CART_PAGE}>
       <IconButton>
         <Badge
-          className={style.iconCart}
+          className={style.cartBadge}
           badgeContent={cartList.length}
           color="success"
         >

@@ -13,7 +13,7 @@ import Discount from "../../../../components/Discount";
 import BackButton from "../../../../components/Buttons/BackButton";
 import NotFoundComponent from "../../../../components/NotFoundComponent";
 import GoToCartButton from "../../../../components/Buttons/GoToCartButton";
-import AddToCartButton from "../../../../components/Buttons/AddToCartButton";
+import CustomButton from "../../../../components/Buttons/CustomButton";
 
 import style from "./styles.module.scss";
 
@@ -81,7 +81,8 @@ const ProductDetailsPageLayout: FC<ProductDetailsPageProps> = ({
                         {isAddItemToCart(product.id) ? (
                           <GoToCartButton handleClick={handleGoToCart} />
                         ) : (
-                          <AddToCartButton
+                          <CustomButton
+                            title={"Add to cart"}
                             handleClick={() =>
                               handleAddProductToCart(product.id)
                             }

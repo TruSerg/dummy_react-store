@@ -13,29 +13,43 @@ import ButtonDelete from "../../../../components/Buttons/ButtonDelete";
 import CartIsEmptyImage from "../../../../components/CartIsEmptyImage";
 import Title from "../../../../components/Title";
 import ProductPrice from "../../../../components/ProductPrice";
+import CustomButton from "../../../../components/Buttons/CustomButton";
+import Modal from "../../../../components/Modal";
 
 import style from "./styles.module.scss";
 
 interface CartPageProps {
+  isModalOpen: boolean;
   cartList: IProduct[];
   totalPrice: number;
+  handleModalClose: () => void;
   handleGoToDetails: (id: number) => void;
   handleDeleteProductFromCart: (id: number) => void;
   handleProductQuantityIncrement: (product: IProduct) => void;
   handleProductQuantityDecrement: (product: IProduct) => void;
+  handleMakeUserOrder: () => void;
 }
 
 const CartPageLayout: FC<CartPageProps> = ({
+  isModalOpen,
   cartList,
   totalPrice,
+  handleModalClose,
   handleGoToDetails,
   handleDeleteProductFromCart,
   handleProductQuantityIncrement,
   handleProductQuantityDecrement,
+  handleMakeUserOrder,
 }) => {
   return (
     <div className={style.cart}>
-      <Title title={"Cart"} />
+      {isModalOpen && (
+        <Modal handleClose={handleModalClose}>
+          <span className={style.cartModalText}>Your order is accepted!</span>
+        </Modal>
+      )}
+
+      <Title title="Cart" />
       <Container>
         <>
           <BackButton />
@@ -99,6 +113,12 @@ const CartPageLayout: FC<CartPageProps> = ({
                   </div>
                 </div>
               ))}
+              <div className={style.cartOrder}>
+                <CustomButton
+                  title="Create order"
+                  handleClick={handleMakeUserOrder}
+                />
+              </div>
             </>
           )}
         </>

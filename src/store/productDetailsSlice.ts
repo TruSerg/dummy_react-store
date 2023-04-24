@@ -11,7 +11,7 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
-  product: <IProduct>{},
+  product: {} as IProduct,
   error: "",
   isLoading: false,
 };

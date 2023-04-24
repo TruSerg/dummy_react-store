@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 50px 0;
+  padding: 30px 0;
 
   &Slider {
     margin-bottom: 100px;
@@ -83,8 +83,6 @@
 
 @media(max-width: 767px) {
   .wrapper {
-    padding: 30px 0;
-
     &Slider {
       margin-bottom: 30px;
     }

@@ -11,7 +11,7 @@ interface ProductsCategoryState {
 }
 
 const initialState: ProductsCategoryState = {
-  productsCategory: <ServerResponse>{},
+  productsCategory: {} as ServerResponse,
   error: "",
   isLoading: false,
 };

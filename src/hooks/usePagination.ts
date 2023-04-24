@@ -28,7 +28,7 @@ const usePagination = (array: IProduct[] | undefined) => {
     return () => {
       clearTimeout(pagination);
     };
-  }, [currentPage, array, perPage]);
+  }, [currentPage, currentList, array, perPage]);
 
   const handlePageChange = useCallback(
     (page: number) => {

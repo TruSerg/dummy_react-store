@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, memo } from "react";
 
-import sprite from "../../static/sprite.svg";
+import sprite from "../../../static/sprite.svg";
 
 import style from "./styles.module.scss";
 

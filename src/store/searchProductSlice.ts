@@ -12,7 +12,7 @@ interface SearchProductState {
 }
 
 const initialState: SearchProductState = {
-  searchedProducts: <ServerResponse>{},
+  searchedProducts: {} as ServerResponse,
   productSearchValue: "",
   error: "",
   isLoading: false,

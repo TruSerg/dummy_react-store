@@ -5,12 +5,15 @@ import { ROUTES } from "../../routes/routeNames";
 
 import Container from "../Container";
 import Catalog from "../Catalog/Catalog";
-import SearchInput from "../SearchInput";
+import SearchInput from "../Inputs/SearchInput";
 import CartIconButton from "../Buttons/CartIconButton";
+import SignupIconButton from "../Buttons/SignupIconButton";
 
 import style from "./styles.module.scss";
+import AccountIconButton from "../Buttons/AccountIconButton";
 
 interface HeaderProps {
+  isAuth: boolean;
   productSearchValue: string;
   handleProductSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
   checkInputSearchBlur: () => void;
@@ -18,6 +21,7 @@ interface HeaderProps {
 }
 
 const HeaderLayout: FC<HeaderProps> = ({
+  isAuth,
   productSearchValue,
   handleProductSearchChange,
   checkInputSearchBlur,
@@ -26,14 +30,18 @@ const HeaderLayout: FC<HeaderProps> = ({
   return (
     <header className={style.header}>
       <Container>
-        <a
-          href="https://dummyjson.com"
-          target="_blank"
-          rel="noreferrer"
-          className={style.headerLogo}
-        >
-          DUMMYstore.
-        </a>
+        <div className={style.headerTop}>
+          <a
+            href="https://dummyjson.com"
+            target="_blank"
+            rel="noreferrer"
+            className={style.headerLogo}
+          >
+            DUMMYstore.
+          </a>
+          {isAuth ? <AccountIconButton /> : <SignupIconButton />}
+        </div>
+
         <div className={style.headerWrapper}>
           <div className={style.headerCatalog}>
             <Catalog />

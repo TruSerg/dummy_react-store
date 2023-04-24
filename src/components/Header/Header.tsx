@@ -16,6 +16,8 @@ const Header = () => {
 
   const { productSearchValue } = useAppSelector((state) => state.searchProduct);
 
+  const { isAuth } = useAppSelector((state) => state.signupUser);
+
   const debouncedSearchProductValue = useDebounce(productSearchValue);
   const {
     isFocus,
@@ -34,6 +36,7 @@ const Header = () => {
 
   return (
     <HeaderLayout
+      isAuth={isAuth}
       productSearchValue={productSearchValue}
       handleProductSearchChange={handleProductSearchChange}
       checkInputSearchBlur={checkInputSearchBlur}

@@ -39,6 +39,9 @@ const cartSlice = createSlice({
         return (state.totalPrice = acc + item.price * item.quantity);
       }, 0);
     },
+    cartClear(state) {
+      state.cartList = [];
+    },
   },
 });
 
@@ -47,5 +50,6 @@ export const {
   deleteProductFromCart,
   cartItemChange,
   cartTotalSum,
+  cartClear,
 } = cartSlice.actions;
 export default cartSlice.reducer;
