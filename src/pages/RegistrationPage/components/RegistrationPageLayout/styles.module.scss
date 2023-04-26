@@ -23,3 +23,15 @@
   color: #50af31;
   font-weight: 600;
 }
+
+@media (max-width: 767px) {
+  .modalText {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 490px) {
+  .modalText {
+    font-size: 22px;
+  }
+}

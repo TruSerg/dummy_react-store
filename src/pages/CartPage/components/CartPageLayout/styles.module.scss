@@ -180,6 +180,10 @@
     &TablePrice {
       grid-column: 2/3;
     }
+
+    &ModalText {
+      font-size: 24px;
+    }
   }
 }
 
@@ -223,6 +227,10 @@
 
     &TablePrice {
       grid-column: 1/2;
+    }
+
+    &ModalText {
+      font-size: 22px;
     }
   }
 }
