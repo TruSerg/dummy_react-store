@@ -79,7 +79,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isFirstNameValid && (
+              {!isFirstNameValid && isFocus && (
                 <FormFieldErrorArea title="Required!" />
               )}
             </div>
@@ -93,7 +93,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isLastNameValid && (
+              {!isLastNameValid && isFocus && (
                 <FormFieldErrorArea title="Required!" />
               )}
             </div>
@@ -107,7 +107,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isUserNameValid && (
+              {!isUserNameValid && isFocus && (
                 <FormFieldErrorArea title="Required!" />
               )}
             </div>
@@ -121,7 +121,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isEmailValid && (
+              {!isEmailValid && isFocus && (
                 <FormFieldErrorArea title="Email is incorrect!" />
               )}
             </div>
@@ -135,7 +135,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isPhoneValid && (
+              {!isPhoneValid && isFocus && (
                 <FormFieldErrorArea title="Phone is incorrect!" />
               )}
             </div>
@@ -149,7 +149,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isPasswordValid && (
+              {!isPasswordValid && isFocus && (
                 <FormFieldErrorArea title="Password is incorrect!" />
               )}
             </div>
@@ -163,7 +163,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isPasswordConfirmValid && (
+              {!isPasswordConfirmValid && isFocus && (
                 <FormFieldErrorArea title="Confirm password is incorrect!" />
               )}
             </div>
@@ -177,7 +177,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && !isGenderValid && (
+              {!isGenderValid && isFocus && (
                 <FormFieldErrorArea title="Required!" />
               )}
             </div>
