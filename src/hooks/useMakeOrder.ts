@@ -46,13 +46,12 @@ const useMakeOrder = () => {
   useEffect(() => {
     if (isMadeOrder) {
       handleModalOpen();
+
+      setTimeout(() => {
+        handleModalClose();
+        navigate(ROUTES.USER_PAGE);
+      }, 2000);
     }
-
-    const modalVisibleTimeout = setTimeout(() => {
-      handleModalClose();
-    }, 3000);
-
-    return () => clearTimeout(modalVisibleTimeout);
   }, [handleModalOpen, handleModalClose, isMadeOrder]);
 
   return { isModalOpen, handleModalClose, handleMakeUserOrder };

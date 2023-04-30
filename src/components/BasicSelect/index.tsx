@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, FocusEvent } from "react";
 
 import {
   InputLabel,
@@ -14,6 +14,8 @@ interface BasicSelectProps {
   label: string;
   name: string;
   handleFieldChange: (e: SelectChangeEvent) => void;
+  checkInputFormBlur: (e: FocusEvent<HTMLInputElement>) => void;
+  checkInputFormFocus: (e: FocusEvent<HTMLInputElement>) => void;
 }
 
 const BasicSelect: FC<BasicSelectProps> = ({
@@ -22,6 +24,8 @@ const BasicSelect: FC<BasicSelectProps> = ({
   label,
   name,
   handleFieldChange,
+  checkInputFormFocus,
+  checkInputFormBlur,
 }) => {
   return (
     <FormControl fullWidth className={className}>
@@ -35,6 +39,8 @@ const BasicSelect: FC<BasicSelectProps> = ({
         value={value}
         label={label}
         onChange={handleFieldChange}
+        onFocus={checkInputFormFocus}
+        onBlur={checkInputFormBlur}
         color="secondary"
       >
         <MenuItem value="male">Male</MenuItem>

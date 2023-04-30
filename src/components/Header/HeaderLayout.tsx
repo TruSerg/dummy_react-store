@@ -8,9 +8,9 @@ import Catalog from "../Catalog/Catalog";
 import SearchInput from "../Inputs/SearchInput";
 import CartIconButton from "../Buttons/CartIconButton";
 import SignupIconButton from "../Buttons/SignupIconButton";
+import AccountIconButton from "../Buttons/AccountIconButton";
 
 import style from "./styles.module.scss";
-import AccountIconButton from "../Buttons/AccountIconButton";
 
 interface HeaderProps {
   isAuth: boolean;

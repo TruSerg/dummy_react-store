@@ -1,6 +1,7 @@
 import { FormEvent, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import isEmail from "validator/es/lib/isEmail";
+import validator from "validator";
 
 import { signupUser } from "../../../store/signupSlice";
 
@@ -20,7 +21,14 @@ const RegistrationPageContainer = () => {
 
   const { isModalOpen, handleModalClose, handleModalOpen } = useModal();
 
-  const { formData, handleFormFieldChange } = useForm({
+  const {
+    isFocus,
+    formData,
+    handleFormFieldChange,
+    handleFormReset,
+    checkInputFormFocus,
+    checkInputFormBlur,
+  } = useForm({
     firstName: "",
     lastName: "",
     username: "",
@@ -36,9 +44,12 @@ const RegistrationPageContainer = () => {
   const isLastNameValid = formData.lastName.toLowerCase().length > 0;
   const isUserNameValid = formData.username.toLowerCase().length > 0;
   const isGenderValid = formData.gender.toLowerCase().length > 0;
-  const isPhoneValid = formData.phone.length > 0;
-  const isPasswordValid = formData.password.length > 0;
-  const isPasswordConfirmValid = formData.passwordConfirm.length > 0;
+  const isPhoneValid =
+    formData.phone.length > 0 && validator.isMobilePhone(formData.phone);
+  const isPasswordValid = formData.password.length > 3;
+  const isPasswordConfirmValid =
+    formData.passwordConfirm.length > 3 &&
+    formData.password === formData.passwordConfirm;
 
   const isFormValid =
     isEmailValid &&
@@ -68,8 +79,11 @@ const RegistrationPageContainer = () => {
     if (isAuth) {
       handleModalOpen();
 
+      handleFormReset();
+
       setTimeout(() => {
         handleModalClose();
+
         navigate(ROUTES.PRODUCTS_PAGE);
       }, 2000);
     }
@@ -77,6 +91,7 @@ const RegistrationPageContainer = () => {
 
   return (
     <RegistrationPageLayout
+      isFocus={isFocus}
       isEmailValid={isEmailValid}
       isFirstNameValid={isFirstNameValid}
       isLastNameValid={isLastNameValid}
@@ -91,6 +106,8 @@ const RegistrationPageContainer = () => {
       handleModalClose={handleModalClose}
       handleFormFieldChange={handleFormFieldChange}
       handleFormSubmit={handleFormSubmit}
+      checkInputFormFocus={checkInputFormFocus}
+      checkInputFormBlur={checkInputFormBlur}
     />
   );
 };

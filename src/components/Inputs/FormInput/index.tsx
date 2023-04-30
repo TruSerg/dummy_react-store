@@ -1,24 +1,28 @@
 import { ChangeEvent, FC } from "react";
+import { SelectChangeEvent } from "@mui/material";
 
 import style from "./styles.module.scss";
-import { SelectChangeEvent } from "@mui/material";
 
 interface FormInputProps {
   type: string;
   value: string;
   name: string;
+  placeholder: string;
   handleFieldChange: (
     e: ChangeEvent<HTMLInputElement> | SelectChangeEvent
   ) => void;
-  placeholder: string;
+  checkInputFormBlur: (e: ChangeEvent<HTMLInputElement>) => void;
+  checkInputFormFocus: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const FormInput: FC<FormInputProps> = ({
   type,
   value,
   name,
-  handleFieldChange,
   placeholder,
+  handleFieldChange,
+  checkInputFormBlur,
+  checkInputFormFocus,
 }) => {
   return (
     <input
@@ -26,8 +30,10 @@ const FormInput: FC<FormInputProps> = ({
       type={type}
       value={value}
       name={name}
-      onChange={handleFieldChange}
       placeholder={placeholder}
+      onChange={handleFieldChange}
+      onBlur={checkInputFormBlur}
+      onFocus={checkInputFormFocus}
     />
   );
 };

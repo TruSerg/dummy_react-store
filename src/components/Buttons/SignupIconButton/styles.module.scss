@@ -12,6 +12,7 @@
   }
 
   &Text {
+    font-size: 16px;
     color: #50af31;
   }
 }
@@ -20,6 +21,10 @@
   .signup {
     &Icon {
       font-size: 30px !important;
+    }
+
+    &Text {
+      font-size: 14px;
     }
   }
 }

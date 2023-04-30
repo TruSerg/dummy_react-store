@@ -107,7 +107,7 @@ const CartPageLayout: FC<CartPageProps> = ({
                   </div>
                   <div className={style.cartTablePrice}>
                     <ProductPrice
-                      title={"Price:"}
+                      title="Price:"
                       price={+(product.price * product.quantity).toFixed(2)}
                     />
                   </div>

@@ -15,12 +15,13 @@ import FormFieldErrorArea from "../../../../components/CustomForm/FormFieldError
 import style from "./styles.module.scss";
 
 interface RegistrationPageLayoutProps {
+  isFocus: boolean;
   isEmailValid: boolean;
   isFirstNameValid: boolean;
   isLastNameValid: boolean;
   isUserNameValid: boolean;
   isGenderValid: boolean;
-  isPhoneValid: boolean;
+  isPhoneValid: boolean | RegExp;
   isPasswordValid: boolean;
   isPasswordConfirmValid: boolean;
   isFormValid: boolean;
@@ -31,9 +32,12 @@ interface RegistrationPageLayoutProps {
     e: ChangeEvent<HTMLInputElement> | SelectChangeEvent
   ) => void;
   handleFormSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  checkInputFormBlur: (e: ChangeEvent<HTMLInputElement>) => void;
+  checkInputFormFocus: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
+  isFocus,
   isEmailValid,
   isFirstNameValid,
   isLastNameValid,
@@ -48,6 +52,8 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
   handleModalClose,
   handleFormFieldChange,
   handleFormSubmit,
+  checkInputFormFocus,
+  checkInputFormBlur,
 }) => {
   return (
     <div className={style.registration}>
@@ -68,40 +74,54 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 type="text"
                 value={formData.firstName}
                 name="firstName"
-                handleFieldChange={handleFormFieldChange}
                 placeholder="First name..."
+                handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isFirstNameValid && <FormFieldErrorArea title="Required!" />}
+              {isFocus && !isFirstNameValid && (
+                <FormFieldErrorArea title="Required!" />
+              )}
             </div>
             <div className={style.registrationInput}>
               <FormInput
                 type="text"
                 value={formData.lastName}
                 name="lastName"
-                handleFieldChange={handleFormFieldChange}
                 placeholder="Last name..."
+                handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isLastNameValid && <FormFieldErrorArea title="Required!" />}
+              {isFocus && !isLastNameValid && (
+                <FormFieldErrorArea title="Required!" />
+              )}
             </div>
             <div className={style.registrationInput}>
               <FormInput
                 type="text"
                 value={formData.username}
                 name="username"
-                handleFieldChange={handleFormFieldChange}
                 placeholder="Username..."
+                handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isUserNameValid && <FormFieldErrorArea title="Required!" />}
+              {isFocus && !isUserNameValid && (
+                <FormFieldErrorArea title="Required!" />
+              )}
             </div>
             <div className={style.registrationInput}>
               <FormInput
                 type="email"
                 value={formData.email}
                 name="email"
-                handleFieldChange={handleFormFieldChange}
                 placeholder="Email..."
+                handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isEmailValid && (
+              {isFocus && !isEmailValid && (
                 <FormFieldErrorArea title="Email is incorrect!" />
               )}
             </div>
@@ -110,31 +130,41 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 type="phone"
                 value={formData.phone}
                 name="phone"
-                handleFieldChange={handleFormFieldChange}
                 placeholder="Phone..."
+                handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isPhoneValid && <FormFieldErrorArea title="Required!" />}
+              {isFocus && !isPhoneValid && (
+                <FormFieldErrorArea title="Phone is incorrect!" />
+              )}
             </div>
             <div className={style.registrationInput}>
               <FormInput
                 type="password"
                 value={formData.password}
                 name="password"
-                handleFieldChange={handleFormFieldChange}
                 placeholder="Password..."
+                handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isPasswordValid && <FormFieldErrorArea title="Required!" />}
+              {isFocus && !isPasswordValid && (
+                <FormFieldErrorArea title="Password is incorrect!" />
+              )}
             </div>
             <div className={style.registrationInput}>
               <FormInput
                 type="password"
                 value={formData.passwordConfirm}
                 name="passwordConfirm"
-                handleFieldChange={handleFormFieldChange}
                 placeholder="Confirm password..."
+                handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isPasswordConfirmValid && (
-                <FormFieldErrorArea title="Required!" />
+              {isFocus && !isPasswordConfirmValid && (
+                <FormFieldErrorArea title="Confirm password is incorrect!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -144,8 +174,12 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 name="gender"
                 label="Gender"
                 handleFieldChange={handleFormFieldChange}
+                checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {!isGenderValid && <FormFieldErrorArea title="Required!" />}
+              {isFocus && !isGenderValid && (
+                <FormFieldErrorArea title="Required!" />
+              )}
             </div>
             <CustomButton
               title={"SIGNUP"}

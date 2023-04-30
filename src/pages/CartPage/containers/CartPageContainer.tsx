@@ -6,8 +6,6 @@ import CartPageLayout from "../components/CartPageLayout";
 const CartPageContainer = () => {
   const { cartList, totalPrice } = useAppSelector((state) => state.cart);
 
-  console.log(cartList);
-
   const { isModalOpen, handleModalClose, handleMakeUserOrder } = useMakeOrder();
   const {
     handleDeleteProductFromCart,

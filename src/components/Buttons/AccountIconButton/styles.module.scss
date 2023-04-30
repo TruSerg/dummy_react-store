@@ -12,6 +12,19 @@
   }
 
   &Name {
+    font-size: 16px;
     color: #50af31;
+  }
+}
+
+@media(max-width: 490px) {
+  .account {
+    &Icon {
+      font-size: 30px !important;
+    }
+
+    &Name {
+      font-size: 14px;
+    }
   }
 }

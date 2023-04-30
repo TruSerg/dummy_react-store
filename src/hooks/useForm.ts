@@ -3,6 +3,7 @@ import { SelectChangeEvent } from "@mui/material";
 
 const useForm = (initialFormData: any) => {
   const [formData, setFormData] = useState(initialFormData);
+  const [isFocus, setIsFocus] = useState(true);
 
   const handleFormFieldChange = useCallback(
     (e: ChangeEvent<HTMLInputElement> | SelectChangeEvent) => {
@@ -22,7 +23,22 @@ const useForm = (initialFormData: any) => {
     setFormData(initialFormData);
   }, [initialFormData]);
 
-  return { formData, handleFormFieldChange, handleFormReset };
+  const checkInputFormBlur = () => {
+    setIsFocus(false);
+  };
+
+  const checkInputFormFocus = () => {
+    setIsFocus(true);
+  };
+
+  return {
+    isFocus,
+    formData,
+    handleFormFieldChange,
+    handleFormReset,
+    checkInputFormBlur,
+    checkInputFormFocus,
+  };
 };
 
 export default useForm;
