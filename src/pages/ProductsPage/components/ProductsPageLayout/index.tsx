@@ -9,11 +9,15 @@ import Loader from "../../../../components/Loader";
 import Title from "../../../../components/Title";
 
 import style from "./styles.module.scss";
+import PaginationData from "../../../../components/PaginationData";
 
 interface ProductsPageProps {
   products: IProduct[] | undefined;
   isProductsLoading: boolean;
   isPageLoading: boolean;
+  productsLength: number | undefined;
+  firstProductsIndex: number;
+  lastProductsIndex: number;
   currentPage: number;
   pageCount: number;
   handlePageChange: (page: number) => void;
@@ -27,6 +31,9 @@ const ProductsPageLayout: FC<ProductsPageProps> = ({
   products,
   isProductsLoading,
   isPageLoading,
+  productsLength,
+  firstProductsIndex,
+  lastProductsIndex,
   currentPage,
   pageCount,
   handlePageChange,
@@ -75,6 +82,12 @@ const ProductsPageLayout: FC<ProductsPageProps> = ({
                 )}
               </div>
               <div className={style.productsPagination}>
+                <PaginationData
+                  firstItemIndex={firstProductsIndex}
+                  lastItemIndex={lastProductsIndex}
+                  arrayItemsLength={productsLength}
+                />
+
                 <BasicPagination
                   pageCount={pageCount}
                   currentPage={currentPage}

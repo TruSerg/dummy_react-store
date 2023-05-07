@@ -4,9 +4,9 @@ import { getProducts } from "../../../store/productsSlice";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/useStoreHooks";
 import { usePagination, useProductsDetails } from "../../../hooks";
+import { useCart } from "../../../hooks";
 
 import ProductsPageLayout from "../components/ProductsPageLayout";
-import useCart from "../../../hooks/useCart";
 
 const ProductsPageContainer: FC = () => {
   const dispatch = useAppDispatch();
@@ -19,8 +19,16 @@ const ProductsPageContainer: FC = () => {
     dispatch(getProducts());
   }, [dispatch]);
 
-  const { list, isPageLoading, currentPage, pageCount, handlePageChange } =
-    usePagination(productsResponse.products);
+  const {
+    array,
+    list,
+    isPageLoading,
+    firstProductsIndex,
+    lastProductsIndex,
+    currentPage,
+    pageCount,
+    handlePageChange,
+  } = usePagination(productsResponse.products);
 
   const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
 
@@ -30,6 +38,9 @@ const ProductsPageContainer: FC = () => {
     <ProductsPageLayout
       currentPage={currentPage}
       products={list}
+      productsLength={array?.length}
+      firstProductsIndex={firstProductsIndex}
+      lastProductsIndex={lastProductsIndex}
       isProductsLoading={isLoading}
       isPageLoading={isPageLoading}
       pageCount={pageCount}

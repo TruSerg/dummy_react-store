@@ -3,22 +3,20 @@ import { FC, memo } from "react";
 import style from "./styles.module.scss";
 
 interface PaginationDataProps {
-  currentQuantityProducts: number;
-  indexOfFirstProduct: number;
-  products: number | undefined;
+  firstItemIndex: number;
+  lastItemIndex: number;
+  arrayItemsLength: number | undefined;
 }
 
 const PaginationData: FC<PaginationDataProps> = ({
-  currentQuantityProducts,
-  indexOfFirstProduct,
-  products,
+  firstItemIndex,
+  lastItemIndex,
+  arrayItemsLength,
 }) => {
   return (
-    <div className={style.paginationArea}>
-      <span className={style.paginationData}>{`${
-        indexOfFirstProduct + 1
-      } - ${products} of ${currentQuantityProducts} items`}</span>
-    </div>
+    <span className={style.paginationData}>{`${
+      firstItemIndex + 1
+    } - ${lastItemIndex} of ${arrayItemsLength} items`}</span>
   );
 };
 

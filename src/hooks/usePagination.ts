@@ -41,11 +41,13 @@ const usePagination = (array: IProduct[] | undefined) => {
   );
 
   return {
+    array,
     list,
     isPageLoading,
     currentPage,
     pageCount,
     firstProductsIndex,
+    lastProductsIndex,
     handlePageChange,
   };
 };
