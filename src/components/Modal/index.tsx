@@ -1,10 +1,10 @@
-import { FC, ReactNode } from "react";
+import { FC, memo, ReactNode } from "react";
 
 import style from "./styles.module.scss";
 
 interface ModalProps {
   children: ReactNode;
-  handleClose: () => void;
+  handleClose?: () => void;
 }
 
 const Modal: FC<ModalProps> = ({ children, handleClose }) => {
@@ -16,4 +16,4 @@ const Modal: FC<ModalProps> = ({ children, handleClose }) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);

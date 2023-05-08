@@ -1,0 +1,27 @@
+.error {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+
+  &Message {
+    color: #ed1c24;
+    margin-bottom: 20px;
+  }
+
+  &Text {
+    color: #50af31;
+  }
+}
+
+@media (max-width: 767px) {
+  .error {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 490px) {
+  .error {
+    font-size: 22px;
+  }
+}
+

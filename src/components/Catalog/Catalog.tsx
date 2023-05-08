@@ -15,7 +15,9 @@ const Catalog = () => {
   const { anchorEl, isCatalogOpen, handleCatalogClick, handleCatalogClose } =
     useCatalog();
 
-  const { categories } = useAppSelector((state) => state.categories);
+  const { categories, isLoading, isError, error } = useAppSelector(
+    (state) => state.categories
+  );
 
   const handleGetProductsCategory = useCallback(
     (category: string) => {
@@ -31,9 +33,12 @@ const Catalog = () => {
 
   return (
     <CatalogLayout
+      isError={isError}
+      isLoading={isLoading}
+      isOpen={isCatalogOpen}
+      error={error}
       categories={categories}
       anchorEl={anchorEl}
-      isOpen={isCatalogOpen}
       handleClick={handleCatalogClick}
       handleClose={handleCatalogClose}
       handleGetProductsCategory={handleGetProductsCategory}

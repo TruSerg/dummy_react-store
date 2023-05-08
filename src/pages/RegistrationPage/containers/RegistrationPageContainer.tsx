@@ -87,7 +87,7 @@ const RegistrationPageContainer = () => {
         navigate(ROUTES.PRODUCTS_PAGE);
       }, 2000);
     }
-  }, [isAuth, handleModalOpen, handleModalClose, navigate]);
+  }, [navigate, isAuth, handleModalOpen, handleModalClose, handleFormReset]);
 
   return (
     <RegistrationPageLayout

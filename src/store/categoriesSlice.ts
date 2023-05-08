@@ -5,14 +5,16 @@ import api from "../http";
 interface CategoriesState {
   categories: string[];
   category: string;
-  error: string;
+  error: string | null;
+  isError: boolean;
   isLoading: boolean;
 }
 
 const initialState: CategoriesState = {
   categories: [],
   category: "",
-  error: "",
+  error: null,
+  isError: false,
   isLoading: false,
 };
 
@@ -20,13 +22,11 @@ export const getCategories = createAsyncThunk(
   "categories/getCategories",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await api.get(`products/categories`);
+      const response = await api.get("products/categories");
 
-      const data = res.data;
-
-      return data;
-    } catch (e) {
-      // rejectWithValue(e.message);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -42,19 +42,22 @@ const categoriesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getCategories.pending, (state: CategoriesState) => {
       state.isLoading = true;
-      state.error = "";
     });
     builder.addCase(
       getCategories.fulfilled,
       (state: CategoriesState, action: PayloadAction<string[]>) => {
         state.isLoading = false;
-        state.error = "";
         state.categories = action.payload;
       }
     );
-    builder.addCase(getCategories.rejected, (state: CategoriesState) => {
-      state.isLoading = false;
-    });
+    builder.addCase(
+      getCategories.rejected,
+      (state: CategoriesState, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      }
+    );
   },
 });
 

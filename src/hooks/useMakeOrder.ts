@@ -41,7 +41,7 @@ const useMakeOrder = () => {
     } else {
       navigate(ROUTES.REGISTRATION_PAGE);
     }
-  }, [isAuth, navigate, userOrderTotalPrice, cartList, dispatch]);
+  }, [navigate, isAuth, userOrderTotalPrice, cartList, dispatch]);
 
   useEffect(() => {
     if (isMadeOrder) {
@@ -52,7 +52,7 @@ const useMakeOrder = () => {
         navigate(ROUTES.USER_PAGE);
       }, 2000);
     }
-  }, [handleModalOpen, handleModalClose, isMadeOrder]);
+  }, [navigate, handleModalOpen, handleModalClose, isMadeOrder]);
 
   return { isModalOpen, handleModalClose, handleMakeUserOrder };
 };

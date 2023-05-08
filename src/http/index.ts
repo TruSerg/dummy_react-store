@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "https://dummyjson.com/";
+const baseURL = "https://dummyjson.com";
 
 const config = {
   baseURL,

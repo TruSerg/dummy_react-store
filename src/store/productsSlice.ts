@@ -6,13 +6,15 @@ import api from "../http";
 
 interface ProductsCategoryState {
   productsResponse: ServerResponse;
-  error: string;
+  error: null | string;
+  isError: boolean;
   isLoading: boolean;
 }
 
 const initialState: ProductsCategoryState = {
   productsResponse: {} as ServerResponse,
-  error: "",
+  error: null,
+  isError: false,
   isLoading: false,
 };
 
@@ -20,13 +22,11 @@ export const getProducts = createAsyncThunk(
   "products/getProducts",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await api.get("/products?limit=0");
+      const response = await api.get("/products?limit=0");
 
-      const data = res.data;
-
-      return data;
-    } catch (e) {
-      // rejectWithValue(e.message);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -38,19 +38,22 @@ const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state: ProductsCategoryState) => {
       state.isLoading = true;
-      state.error = "";
     });
     builder.addCase(
       getProducts.fulfilled,
       (state: ProductsCategoryState, action: PayloadAction<ServerResponse>) => {
         state.isLoading = false;
-        state.error = "";
         state.productsResponse = action.payload;
       }
     );
-    builder.addCase(getProducts.rejected, (state: ProductsCategoryState) => {
-      state.isLoading = false;
-    });
+    builder.addCase(
+      getProducts.rejected,
+      (state: ProductsCategoryState, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      }
+    );
   },
 });
 

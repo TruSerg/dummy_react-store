@@ -5,11 +5,17 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 
 import { ROUTES } from "../../routes/routeNames";
 
+import BasicError from "../Error";
+import Loader from "../Loader";
+
 import style from "./styles.module.scss";
 
 interface CatalogProps {
-  categories: string[];
+  isError: boolean;
+  isLoading: boolean;
   isOpen: boolean;
+  error: string | null;
+  categories: string[];
   anchorEl: HTMLElement | null;
   handleClick: (event: MouseEvent<HTMLElement>) => void;
   handleClose: () => void;
@@ -17,9 +23,12 @@ interface CatalogProps {
 }
 
 const CatalogLayout: FC<CatalogProps> = ({
+  isError,
+  isLoading,
+  isOpen,
+  error,
   categories,
   anchorEl,
-  isOpen,
   handleClick,
   handleClose,
   handleGetProductsCategory,
@@ -37,27 +46,48 @@ const CatalogLayout: FC<CatalogProps> = ({
         />
       </IconButton>
 
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={isOpen}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        {categories?.map((category) => (
-          <Link
-            key={category}
-            onClick={() => handleGetProductsCategory(category)}
-            to={ROUTES.PRODUCTS_CATEGORY_PAGE}
-          >
-            <MenuItem className={style.catalogItem} onClick={handleClose}>
-              {category}
-            </MenuItem>
-          </Link>
-        ))}
-      </Menu>
+      <>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={isOpen}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              {isError ? (
+                <>
+                  <p className={style.catalogError}>
+                    <BasicError error={error} />
+                  </p>
+                </>
+              ) : (
+                <>
+                  {categories?.map((category) => (
+                    <Link
+                      key={category}
+                      onClick={() => handleGetProductsCategory(category)}
+                      to={ROUTES.PRODUCTS_CATEGORY_PAGE}
+                    >
+                      <MenuItem
+                        className={style.catalogItem}
+                        onClick={handleClose}
+                      >
+                        {category}
+                      </MenuItem>
+                    </Link>
+                  ))}
+                </>
+              )}
+            </Menu>
+          </>
+        )}
+      </>
     </>
   );
 };

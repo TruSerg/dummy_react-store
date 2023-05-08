@@ -3,7 +3,7 @@ import { FC, useEffect } from "react";
 import { getProducts } from "../../../store/productsSlice";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/useStoreHooks";
-import { usePagination, useProductsDetails } from "../../../hooks";
+import { useError, usePagination, useProductsDetails } from "../../../hooks";
 import { useCart } from "../../../hooks";
 
 import ProductsPageLayout from "../components/ProductsPageLayout";
@@ -11,9 +11,11 @@ import ProductsPageLayout from "../components/ProductsPageLayout";
 const ProductsPageContainer: FC = () => {
   const dispatch = useAppDispatch();
 
-  const { isLoading, productsResponse } = useAppSelector(
+  const { isLoading, isError, error, productsResponse } = useAppSelector(
     (state) => state.products
   );
+
+  const { isModalOpen } = useError(isError);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -36,13 +38,15 @@ const ProductsPageContainer: FC = () => {
 
   return (
     <ProductsPageLayout
+      isModalOpen={isModalOpen}
+      isProductsLoading={isLoading}
+      isPageLoading={isPageLoading}
+      error={error}
       currentPage={currentPage}
       products={list}
       productsLength={array?.length}
       firstProductsIndex={firstProductsIndex}
       lastProductsIndex={lastProductsIndex}
-      isProductsLoading={isLoading}
-      isPageLoading={isPageLoading}
       pageCount={pageCount}
       handlePageChange={handlePageChange}
       handleGetProductDetails={handleGetProductDetails}
