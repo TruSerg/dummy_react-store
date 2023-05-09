@@ -1,10 +1,10 @@
 import { useAppSelector } from "../../../hooks/useStoreHooks";
-import { useProductsDetails, useCart } from "../../../hooks";
+import { useProductsDetails, useCart, useError } from "../../../hooks";
 
 import ProductsCategoryPageLayout from "../components/ProductsCategoryPageLayout";
 
 const ProductsCategoryPageContainer = () => {
-  const { isLoading, productsCategory } = useAppSelector(
+  const { isLoading, isError, error, productsCategory } = useAppSelector(
     (state) => state.productsCategory
   );
 
@@ -12,17 +12,22 @@ const ProductsCategoryPageContainer = () => {
 
   const { handleGetProductDetails } = useProductsDetails();
 
+  const { isModalOpen, handleModalClose } = useError(isError);
+
   const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
 
   return (
     <ProductsCategoryPageLayout
       isLoading={isLoading}
+      isModalOpen={isModalOpen}
+      isAddItemToCart={isAddItemToCart}
       products={productsCategory.products}
       category={category}
+      error={error}
+      handleModalClose={handleModalClose}
       handleGetProductDetails={handleGetProductDetails}
       handleAddProductToCart={handleAddProductToCart}
       handleGoToCart={handleGoToCart}
-      isAddItemToCart={isAddItemToCart}
     />
   );
 };

@@ -5,13 +5,11 @@ import { IProduct } from "../services/products";
 interface CartState {
   cartList: IProduct[];
   totalPrice: number;
-  isLoading: boolean;
 }
 
 const initialState: CartState = {
   cartList: [],
   totalPrice: 0,
-  isLoading: false,
 };
 
 const cartSlice = createSlice({

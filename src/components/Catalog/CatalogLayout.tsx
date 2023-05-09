@@ -46,48 +46,44 @@ const CatalogLayout: FC<CatalogProps> = ({
         />
       </IconButton>
 
-      <>
-        {isLoading ? (
-          <Loader />
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={isOpen}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        {isError ? (
+          <p className={style.catalogError}>
+            <BasicError error={error} />
+          </p>
         ) : (
-          <>
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={isOpen}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
-            >
-              {isError ? (
-                <>
-                  <p className={style.catalogError}>
-                    <BasicError error={error} />
-                  </p>
-                </>
-              ) : (
-                <>
-                  {categories?.map((category) => (
-                    <Link
-                      key={category}
-                      onClick={() => handleGetProductsCategory(category)}
-                      to={ROUTES.PRODUCTS_CATEGORY_PAGE}
+          <div>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <>
+                {categories?.map((category) => (
+                  <Link
+                    key={category}
+                    onClick={() => handleGetProductsCategory(category)}
+                    to={ROUTES.PRODUCTS_CATEGORY_PAGE}
+                  >
+                    <MenuItem
+                      className={style.catalogItem}
+                      onClick={handleClose}
                     >
-                      <MenuItem
-                        className={style.catalogItem}
-                        onClick={handleClose}
-                      >
-                        {category}
-                      </MenuItem>
-                    </Link>
-                  ))}
-                </>
-              )}
-            </Menu>
-          </>
+                      {category}
+                    </MenuItem>
+                  </Link>
+                ))}
+              </>
+            )}
+          </div>
         )}
-      </>
+      </Menu>
     </>
   );
 };

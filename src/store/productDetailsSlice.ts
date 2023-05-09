@@ -6,13 +6,15 @@ import api from "../http";
 
 interface ProductState {
   product: IProduct;
-  error: string;
+  error: string | null;
+  isError: boolean;
   isLoading: boolean;
 }
 
 const initialState: ProductState = {
   product: {} as IProduct,
-  error: "",
+  error: null,
+  isError: false,
   isLoading: false,
 };
 
@@ -20,13 +22,11 @@ export const getProductDetails = createAsyncThunk(
   "getProduct/getProductDetails",
   async (id: number, { rejectWithValue }) => {
     try {
-      const res = await api.get(`products/${id}`);
+      const response = await api.get(`products/${id}`);
 
-      const data = res.data;
-
-      return data;
-    } catch (e) {
-      // rejectWithValue(e.message);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -38,19 +38,22 @@ const productDetailsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getProductDetails.pending, (state: ProductState) => {
       state.isLoading = true;
-      state.error = "";
     });
     builder.addCase(
       getProductDetails.fulfilled,
       (state: ProductState, action: PayloadAction<IProduct>) => {
         state.isLoading = false;
-        state.error = "";
         state.product = action.payload;
       }
     );
-    builder.addCase(getProductDetails.rejected, (state: ProductState) => {
-      state.isLoading = false;
-    });
+    builder.addCase(
+      getProductDetails.rejected,
+      (state: ProductState, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      }
+    );
   },
 });
 

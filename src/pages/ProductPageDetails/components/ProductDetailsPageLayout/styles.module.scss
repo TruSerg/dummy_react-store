@@ -1,6 +1,10 @@
 .wrapper {
   padding: 30px 0;
 
+  &ErrorText {
+    margin-bottom: 20px;
+  }
+
   &Slider {
     margin-bottom: 100px;
   }

@@ -1,22 +1,29 @@
+import { useEffect } from "react";
+
 import { useAppSelector } from "../../../hooks/useStoreHooks";
-import useCart from "../../../hooks/useCart";
+import { useCart, useError } from "../../../hooks";
 
 import ProductDetailsPageLayout from "../components/ProductDetailsPageLayout";
 
 const ProductDetailsPageContainer = () => {
-  const { product, isLoading } = useAppSelector(
+  const { product, error, isError, isLoading } = useAppSelector(
     (state) => state.productDetails
   );
+
+  const { isModalOpen, handleModalClose } = useError(isError);
 
   const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
 
   return (
     <ProductDetailsPageLayout
-      product={product}
       isLoading={isLoading}
+      isModalOpen={isModalOpen}
+      isAddItemToCart={isAddItemToCart}
+      product={product}
+      error={error}
+      handleModalClose={handleModalClose}
       handleAddProductToCart={handleAddProductToCart}
       handleGoToCart={handleGoToCart}
-      isAddItemToCart={isAddItemToCart}
     />
   );
 };

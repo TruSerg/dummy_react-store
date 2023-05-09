@@ -1,6 +1,10 @@
 .registration {
   padding: 30px 0;
 
+  &ErrorText {
+    margin-bottom: 20px;
+  }
+
   &Wrapper {
     min-height: 60vh;
     display: flex;

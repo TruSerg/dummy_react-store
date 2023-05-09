@@ -1,10 +1,15 @@
 import { useAppSelector } from "../../../hooks/useStoreHooks";
-import { useCart, usePagination, useProductsDetails } from "../../../hooks";
+import {
+  useCart,
+  useError,
+  usePagination,
+  useProductsDetails,
+} from "../../../hooks";
 
 import ProductsSearchPageLayout from "../components/ProductsSearchPageLayout";
 
 const ProductsSearchPageContainer = () => {
-  const { searchedProducts, isLoading } = useAppSelector(
+  const { searchedProducts, error, isLoading, isError } = useAppSelector(
     (state) => state.searchProduct
   );
 
@@ -13,21 +18,26 @@ const ProductsSearchPageContainer = () => {
 
   const { handleGetProductDetails } = useProductsDetails();
 
+  const { isModalOpen, handleModalClose } = useError(isError);
+
   const { handleAddProductToCart, handleGoToCart, isAddItemToCart } = useCart();
 
   return (
     <ProductsSearchPageLayout
-      products={list}
-      itemsQuantity={searchedProducts.limit}
       isLoading={isLoading}
+      isModalOpen={isModalOpen}
       isPageLoading={isPageLoading}
+      isAddItemToCart={isAddItemToCart}
+      products={list}
+      error={error}
+      itemsQuantity={searchedProducts.limit}
       currentPage={currentPage}
       pageCount={pageCount}
+      handleModalClose={handleModalClose}
       handlePageChange={handlePageChange}
       handleGetProductDetails={handleGetProductDetails}
       handleAddProductToCart={handleAddProductToCart}
       handleGoToCart={handleGoToCart}
-      isAddItemToCart={isAddItemToCart}
     />
   );
 };

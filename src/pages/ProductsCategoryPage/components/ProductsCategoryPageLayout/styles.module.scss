@@ -1,6 +1,10 @@
 .products {
   padding: 30px 0;
 
+  &ErrorText {
+    margin-bottom: 20px;
+  }
+
   &Area {
     display: flex;
     flex-direction: column;

@@ -7,14 +7,16 @@ import api from "../http";
 interface SearchProductState {
   searchedProducts: ServerResponse;
   productSearchValue: string;
-  error: string;
+  error: string | null;
+  isError: boolean;
   isLoading: boolean;
 }
 
 const initialState: SearchProductState = {
   searchedProducts: {} as ServerResponse,
   productSearchValue: "",
-  error: "",
+  error: null,
+  isError: false,
   isLoading: false,
 };
 
@@ -22,13 +24,11 @@ export const searchProduct = createAsyncThunk(
   "search/searchProduct",
   async (inputValue: string, { rejectWithValue }) => {
     try {
-      const res = await api.get(`/products/search?q=${inputValue}`);
+      const response = await api.get(`/products/search?q=${inputValue}`);
 
-      const data = res.data;
-
-      return data;
-    } catch (e) {
-      // rejectWithValue(e.message);
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -47,19 +47,22 @@ const searchProductSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(searchProduct.pending, (state: SearchProductState) => {
       state.isLoading = true;
-      state.error = "";
     });
     builder.addCase(
       searchProduct.fulfilled,
       (state: SearchProductState, action: PayloadAction<ServerResponse>) => {
         state.isLoading = false;
-        state.error = "";
         state.searchedProducts = action.payload;
       }
     );
-    builder.addCase(searchProduct.rejected, (state: SearchProductState) => {
-      state.isLoading = false;
-    });
+    builder.addCase(
+      searchProduct.rejected,
+      (state: SearchProductState, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.error = action.payload;
+      }
+    );
   },
 });
 

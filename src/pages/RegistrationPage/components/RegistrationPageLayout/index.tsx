@@ -13,8 +13,12 @@ import Modal from "../../../../components/Modal";
 import FormFieldErrorArea from "../../../../components/CustomForm/FormFieldErrorArea";
 
 import style from "./styles.module.scss";
+import BasicError from "../../../../components/Error";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../../../routes/routeNames";
 
 interface RegistrationPageLayoutProps {
+  isError: boolean;
   isFocus: boolean;
   isEmailValid: boolean;
   isFirstNameValid: boolean;
@@ -26,6 +30,7 @@ interface RegistrationPageLayoutProps {
   isPasswordConfirmValid: boolean;
   isFormValid: boolean;
   isModalOpen: boolean;
+  error: string | null;
   formData: ISignupFormData;
   handleModalClose: () => void;
   handleFormFieldChange: (
@@ -37,6 +42,7 @@ interface RegistrationPageLayoutProps {
 }
 
 const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
+  isError,
   isFocus,
   isEmailValid,
   isFirstNameValid,
@@ -48,6 +54,7 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
   isPasswordConfirmValid,
   isFormValid,
   isModalOpen,
+  error,
   formData,
   handleModalClose,
   handleFormFieldChange,
@@ -62,6 +69,19 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
           <span className={style.modalText}>
             Your registration is successful!
           </span>
+        </Modal>
+      )}
+
+      {isError && (
+        <Modal>
+          <div>
+            <p className={style.registrationErrorText}>
+              <BasicError error={error} />
+            </p>
+            <Link to={ROUTES.PRODUCTS_PAGE}>
+              <CustomButton title="OK" handleClick={handleModalClose} />
+            </Link>
+          </div>
         </Modal>
       )}
 

@@ -5,7 +5,7 @@ import validator from "validator";
 
 import { signupUser } from "../../../store/signupSlice";
 
-import { useForm } from "../../../hooks";
+import { useError, useForm } from "../../../hooks";
 import { useAppDispatch, useAppSelector } from "../../../hooks/useStoreHooks";
 import { useModal } from "../../../hooks";
 
@@ -17,7 +17,9 @@ const RegistrationPageContainer = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { isAuth } = useAppSelector((state) => state.signupUser);
+  const { isAuth, isError, error } = useAppSelector(
+    (state) => state.signupUser
+  );
 
   const { isModalOpen, handleModalClose, handleModalOpen } = useModal();
 
@@ -91,6 +93,7 @@ const RegistrationPageContainer = () => {
 
   return (
     <RegistrationPageLayout
+      isError={isError}
       isFocus={isFocus}
       isEmailValid={isEmailValid}
       isFirstNameValid={isFirstNameValid}
@@ -102,6 +105,7 @@ const RegistrationPageContainer = () => {
       isPasswordConfirmValid={isPasswordConfirmValid}
       isFormValid={isFormValid}
       isModalOpen={isModalOpen}
+      error={error}
       formData={formData}
       handleModalClose={handleModalClose}
       handleFormFieldChange={handleFormFieldChange}
