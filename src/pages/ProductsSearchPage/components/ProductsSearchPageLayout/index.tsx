@@ -82,6 +82,7 @@ const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
                             id,
                             brand,
                             title,
+                            rating,
                             price,
                             stock,
                             thumbnail,
@@ -92,6 +93,7 @@ const ProductsSearchPageLayout: FC<ProductsSearchPageProps> = ({
                               id={id}
                               brand={brand}
                               title={title}
+                              rating={rating}
                               price={price}
                               stock={stock}
                               thumbnail={thumbnail}

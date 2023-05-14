@@ -17,7 +17,7 @@ const RegistrationPageContainer = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { isAuth, isError, error } = useAppSelector(
+  const { isAuth, isLoading, isError, error } = useAppSelector(
     (state) => state.signupUser
   );
 
@@ -93,6 +93,7 @@ const RegistrationPageContainer = () => {
 
   return (
     <RegistrationPageLayout
+      isLoading={isLoading}
       isError={isError}
       isFocus={isFocus}
       isEmailValid={isEmailValid}

@@ -1,7 +1,10 @@
 import { ChangeEvent, FC, FormEvent } from "react";
 import { SelectChangeEvent } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import { ISignupFormData } from "../../../../services/formData";
+
+import { ROUTES } from "../../../../routes/routeNames";
 
 import Container from "../../../../components/Container";
 import BasicSelect from "../../../../components/BasicSelect";
@@ -11,13 +14,13 @@ import FormInput from "../../../../components/Inputs/FormInput";
 import CustomForm from "../../../../components/CustomForm";
 import Modal from "../../../../components/Modal";
 import FormFieldErrorArea from "../../../../components/CustomForm/FormFieldErrorArea";
+import BasicError from "../../../../components/Error";
+import Loader from "../../../../components/Loader";
 
 import style from "./styles.module.scss";
-import BasicError from "../../../../components/Error";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../../../../routes/routeNames";
 
 interface RegistrationPageLayoutProps {
+  isLoading: boolean;
   isError: boolean;
   isFocus: boolean;
   isEmailValid: boolean;
@@ -42,6 +45,7 @@ interface RegistrationPageLayoutProps {
 }
 
 const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
+  isLoading,
   isError,
   isFocus,
   isEmailValid,
@@ -64,6 +68,8 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
 }) => {
   return (
     <div className={style.registration}>
+      {isLoading && <Loader />}
+
       {isModalOpen && (
         <Modal handleClose={handleModalClose}>
           <span className={style.modalText}>

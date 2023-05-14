@@ -69,6 +69,7 @@ const ProductsPageLayout: FC<ProductsPageProps> = ({
                         id,
                         brand,
                         title,
+                        rating,
                         price,
                         stock,
                         thumbnail,
@@ -79,6 +80,7 @@ const ProductsPageLayout: FC<ProductsPageProps> = ({
                           id={id}
                           brand={brand}
                           title={title}
+                          rating={rating}
                           price={price}
                           stock={stock}
                           thumbnail={thumbnail}

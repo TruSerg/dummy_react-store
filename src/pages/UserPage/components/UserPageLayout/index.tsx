@@ -1,7 +1,6 @@
 import { FC } from "react";
 
 import {
-  Typography,
   TableContainer,
   TableHead,
   TableRow,
@@ -97,12 +96,12 @@ const UserPageLayout: FC<UserPageProps> = ({ userInfo, ordersList }) => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                   >
-                    <Typography className={style.userOrdersHeader}>
+                    <div className={style.userOrdersHeader}>
                       <span className={style.userOrdersTableHeader}>
                         Total price:
                       </span>
                       {<ProductPrice price={userOrderTotalPrice} />}
-                    </Typography>
+                    </div>
                   </AccordionSummary>
                   <AccordionDetails>
                     <TableContainer component={Paper}>

@@ -5,6 +5,7 @@ import ProductStock from "../ProductStock";
 import Discount from "../Discount";
 import GoToCartButton from "../Buttons/GoToCartButton";
 import CustomButton from "../Buttons/CustomButton";
+import BasicRating from "../Rating";
 
 import style from "./styles.module.scss";
 
@@ -12,6 +13,7 @@ interface ProductCardProps {
   id: number;
   brand: string;
   title: string;
+  rating: number;
   price: number;
   stock: number;
   thumbnail: string;
@@ -26,6 +28,7 @@ const ProductCard: FC<ProductCardProps> = ({
   id,
   brand,
   title,
+  rating,
   price,
   stock,
   thumbnail,
@@ -50,6 +53,9 @@ const ProductCard: FC<ProductCardProps> = ({
           <span className={style.productCardPoint}>Brand:</span> {brand}
         </p>
         <p className={style.productCardTitle}>{title}</p>
+        <div className={style.productCardRating}>
+          <BasicRating value={rating} />
+        </div>
         <div className={style.productCardStock}>
           <ProductStock stock={stock} />
         </div>
