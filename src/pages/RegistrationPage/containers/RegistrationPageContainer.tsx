@@ -5,7 +5,7 @@ import validator from "validator";
 
 import { signupUser } from "../../../store/signupSlice";
 
-import { useError, useForm } from "../../../hooks";
+import { useForm } from "../../../hooks";
 import { useAppDispatch, useAppSelector } from "../../../hooks/useStoreHooks";
 import { useModal } from "../../../hooks";
 
@@ -62,6 +62,10 @@ const RegistrationPageContainer = () => {
     isPhoneValid &&
     isPasswordValid &&
     isPasswordConfirmValid;
+
+  useEffect(() => {
+    checkInputFormBlur();
+  }, []);
 
   const handleFormSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {

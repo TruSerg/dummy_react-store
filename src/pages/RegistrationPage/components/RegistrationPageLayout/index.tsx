@@ -103,14 +103,11 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="First name..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
 
-              {isFocus && (
-                <>
-                  {!isFirstNameValid && (
-                    <FormFieldErrorArea title="Required!" />
-                  )}
-                </>
+              {isFocus && !isFirstNameValid && (
+                <FormFieldErrorArea title="Required!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -121,11 +118,11 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Last name..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && (
-                <>
-                  {!isLastNameValid && <FormFieldErrorArea title="Required!" />}
-                </>
+
+              {isFocus && !isLastNameValid && (
+                <FormFieldErrorArea title="Required!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -136,11 +133,11 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Username..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && (
-                <>
-                  {!isUserNameValid && <FormFieldErrorArea title="Required!" />}
-                </>
+
+              {isFocus && !isUserNameValid && (
+                <FormFieldErrorArea title="Required!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -151,13 +148,11 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Email..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && (
-                <>
-                  {!isEmailValid && (
-                    <FormFieldErrorArea title="Email is incorrect!" />
-                  )}
-                </>
+
+              {isFocus && !isEmailValid && (
+                <FormFieldErrorArea title="Email is incorrect!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -168,13 +163,11 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Phone..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && (
-                <>
-                  {!isPhoneValid && (
-                    <FormFieldErrorArea title="Phone is incorrect!" />
-                  )}
-                </>
+
+              {isFocus && !isPhoneValid && (
+                <FormFieldErrorArea title="Phone is incorrect!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -185,13 +178,11 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Password..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && (
-                <>
-                  {!isPasswordValid && (
-                    <FormFieldErrorArea title="Password is incorrect!" />
-                  )}
-                </>
+
+              {isFocus && !isPasswordValid && (
+                <FormFieldErrorArea title="Password is incorrect!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -202,13 +193,11 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Confirm password..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
+                checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && (
-                <>
-                  {!isPasswordConfirmValid && (
-                    <FormFieldErrorArea title="Confirm password is incorrect!" />
-                  )}
-                </>
+
+              {isFocus && !isPasswordConfirmValid && (
+                <FormFieldErrorArea title="Confirm password is incorrect!" />
               )}
             </div>
             <div className={style.registrationInput}>
@@ -221,10 +210,9 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {isFocus && (
-                <>
-                  {!isGenderValid && <FormFieldErrorArea title="Required!" />}
-                </>
+
+              {isFocus && !isGenderValid && (
+                <FormFieldErrorArea title="Required!" />
               )}
             </div>
             <CustomButton
