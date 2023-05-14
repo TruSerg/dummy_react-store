@@ -11,7 +11,7 @@ interface FormInputProps {
   handleFieldChange: (
     e: ChangeEvent<HTMLInputElement> | SelectChangeEvent
   ) => void;
-  checkInputFormBlur: (e: ChangeEvent<HTMLInputElement>) => void;
+  checkInputFormBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
   checkInputFormFocus: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 

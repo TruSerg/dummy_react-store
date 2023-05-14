@@ -66,9 +66,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
   checkInputFormFocus,
   checkInputFormBlur,
 }) => {
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
   return (
     <div className={style.registration}>
       {isLoading && <Loader />}
@@ -106,7 +103,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="First name..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
-                checkInputFormBlur={checkInputFormBlur}
               />
 
               {isFocus && (
@@ -125,7 +121,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Last name..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
-                checkInputFormBlur={checkInputFormBlur}
               />
               {isFocus && (
                 <>
@@ -141,7 +136,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Username..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
-                checkInputFormBlur={checkInputFormBlur}
               />
               {isFocus && (
                 <>
@@ -157,7 +151,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Email..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
-                checkInputFormBlur={checkInputFormBlur}
               />
               {isFocus && (
                 <>
@@ -175,7 +168,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Phone..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
-                checkInputFormBlur={checkInputFormBlur}
               />
               {isFocus && (
                 <>
@@ -193,7 +185,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Password..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
-                checkInputFormBlur={checkInputFormBlur}
               />
               {isFocus && (
                 <>
@@ -211,7 +202,6 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 placeholder="Confirm password..."
                 handleFieldChange={handleFormFieldChange}
                 checkInputFormFocus={checkInputFormFocus}
-                checkInputFormBlur={checkInputFormBlur}
               />
               {isFocus && (
                 <>
