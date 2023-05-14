@@ -66,6 +66,9 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
   checkInputFormFocus,
   checkInputFormBlur,
 }) => {
+  // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <div className={style.registration}>
       {isLoading && <Loader />}
@@ -105,8 +108,13 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isFirstNameValid && isFocus && (
-                <FormFieldErrorArea title="Required!" />
+
+              {isFocus && (
+                <>
+                  {!isFirstNameValid && (
+                    <FormFieldErrorArea title="Required!" />
+                  )}
+                </>
               )}
             </div>
             <div className={style.registrationInput}>
@@ -119,8 +127,10 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isLastNameValid && isFocus && (
-                <FormFieldErrorArea title="Required!" />
+              {isFocus && (
+                <>
+                  {!isLastNameValid && <FormFieldErrorArea title="Required!" />}
+                </>
               )}
             </div>
             <div className={style.registrationInput}>
@@ -133,8 +143,10 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isUserNameValid && isFocus && (
-                <FormFieldErrorArea title="Required!" />
+              {isFocus && (
+                <>
+                  {!isUserNameValid && <FormFieldErrorArea title="Required!" />}
+                </>
               )}
             </div>
             <div className={style.registrationInput}>
@@ -147,8 +159,12 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isEmailValid && isFocus && (
-                <FormFieldErrorArea title="Email is incorrect!" />
+              {isFocus && (
+                <>
+                  {!isEmailValid && (
+                    <FormFieldErrorArea title="Email is incorrect!" />
+                  )}
+                </>
               )}
             </div>
             <div className={style.registrationInput}>
@@ -161,8 +177,12 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isPhoneValid && isFocus && (
-                <FormFieldErrorArea title="Phone is incorrect!" />
+              {isFocus && (
+                <>
+                  {!isPhoneValid && (
+                    <FormFieldErrorArea title="Phone is incorrect!" />
+                  )}
+                </>
               )}
             </div>
             <div className={style.registrationInput}>
@@ -175,8 +195,12 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isPasswordValid && isFocus && (
-                <FormFieldErrorArea title="Password is incorrect!" />
+              {isFocus && (
+                <>
+                  {!isPasswordValid && (
+                    <FormFieldErrorArea title="Password is incorrect!" />
+                  )}
+                </>
               )}
             </div>
             <div className={style.registrationInput}>
@@ -189,8 +213,12 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isPasswordConfirmValid && isFocus && (
-                <FormFieldErrorArea title="Confirm password is incorrect!" />
+              {isFocus && (
+                <>
+                  {!isPasswordConfirmValid && (
+                    <FormFieldErrorArea title="Confirm password is incorrect!" />
+                  )}
+                </>
               )}
             </div>
             <div className={style.registrationInput}>
@@ -203,8 +231,10 @@ const RegistrationPageLayout: FC<RegistrationPageLayoutProps> = ({
                 checkInputFormFocus={checkInputFormFocus}
                 checkInputFormBlur={checkInputFormBlur}
               />
-              {!isGenderValid && isFocus && (
-                <FormFieldErrorArea title="Required!" />
+              {isFocus && (
+                <>
+                  {!isGenderValid && <FormFieldErrorArea title="Required!" />}
+                </>
               )}
             </div>
             <CustomButton
