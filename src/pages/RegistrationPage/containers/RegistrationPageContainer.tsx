@@ -65,7 +65,7 @@ const RegistrationPageContainer = () => {
 
   useEffect(() => {
     checkInputFormBlur();
-  }, []);
+  }, [checkInputFormBlur]);
 
   const handleFormSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {

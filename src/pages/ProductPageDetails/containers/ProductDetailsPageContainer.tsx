@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 import { useAppSelector } from "../../../hooks/useStoreHooks";
 import { useCart, useError } from "../../../hooks";
 
