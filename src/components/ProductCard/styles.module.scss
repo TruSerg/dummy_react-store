@@ -1,86 +1,84 @@
 .productCard {
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  width: 100% ;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding: 10px;
-  transition: all .3s ease-in-out;
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	width: 100%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	padding: 10px;
+	transition: all 0.3s ease-in-out;
 
-  &:hover {
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.3);
-  }
+	&:hover {
+		box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.3);
+	}
 
-  &Content {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-  }
+	&Content {
+		display: flex;
+		flex-direction: column;
+		cursor: pointer;
+	}
 
-  &Point {
-    color: #838383;
-    font-weight: 400;
-  }
+	&Point {
+		color: #838383;
+		font-weight: 400;
+	}
 
-  &Img {
-    position: relative;
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
+	&Img {
+		position: relative;
+		height: 200px;
+		width: 100%;
+		object-fit: cover;
+		margin-bottom: 20px;
+		cursor: pointer;
+	}
 
-  &Rating {
-    margin-bottom: 10px;
-  }
+	&Rating {
+		margin-bottom: 10px;
+	}
 
-  &Discount {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    width: 50px;
-    height: 30px;
-    border-bottom-right-radius: 10px;
-    background-color: #50af31;
-    padding: 10px;
-  }
+	&Discount {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		width: 50px;
+		height: 30px;
+		border-bottom-right-radius: 10px;
+		background-color: #50af31;
+		padding: 10px;
+	}
 
-  &Brand {
-    font-size: 18px;
-    font-weight: 600;
-    color: #a84d98;
-    margin-bottom: 10px;
-  }
+	&Brand {
+		font-size: 18px;
+		font-weight: 600;
+		color: #a84d98;
+		margin-bottom: 10px;
+	}
 
-  &Title {
-    font-size: 18px;
-    color: #a84d98;
-    margin-bottom: 10px;
-  }
+	&Title {
+		font-size: 18px;
+		color: #a84d98;
+		margin-bottom: 10px;
+	}
 
-  &Stock {
-    margin-bottom: 10px;
-  }
+	&Stock {
+		margin-bottom: 10px;
+	}
 
-  &Price {
-    margin-bottom: 10px;
-  }
+	&Price {
+		margin-bottom: 10px;
+	}
 }
 
 @media (max-width: 490px) {
-  .productCard {
-    &Title {
-      font-size: 16px;
-    }
+	.productCard {
+		&Title {
+			font-size: 16px;
+		}
 
-    &Brand {
-      font-size: 16px;
-    }
-  }
+		&Brand {
+			font-size: 16px;
+		}
+	}
 }
-
-
