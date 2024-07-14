@@ -1,21 +1,26 @@
 .price {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ed1c24;
+	font-size: 18px;
+	font-weight: 600;
+	color: #ed1c24;
 
-  &Point {
-    color: #838383;
-    font-weight: 400;
-  }
+	&Point {
+		color: #838383;
+		font-weight: 400;
+	}
 
-  &Currency {
-    color: #50af31;
-  }
+	&Currency {
+		color: #50af31;
+	}
+}
+
+@media (max-width: 767px) {
+	.price {
+		font-size: 14px;
+	}
 }
 
 @media (max-width: 490px) {
-  .price {
-    font-size: 16px;
-  }
+	.price {
+		font-size: 14px;
+	}
 }
-

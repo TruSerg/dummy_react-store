@@ -1,61 +1,59 @@
 .products {
-  padding: 30px 0;
+	padding: 30px 0;
 
-  &Area {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
+	&Area {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+	}
 
-  &Wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    gap: 20px;
-  }
+	&Wrapper {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		justify-items: center;
+		gap: 20px;
+	}
 
-  &Pagination {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 50px 0;
-    margin-top: auto;
-    gap: 20px;
-  }
+	&Pagination {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		padding: 50px 0;
+		margin-top: auto;
+		gap: 20px;
+	}
 }
 
 @media (max-width: 1024px) {
-  .products {
-    &Wrapper {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
+	.products {
+		&Wrapper {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
 }
 
 @media (max-width: 767px) {
-  .products {
-    padding: 30px 0;
+	.products {
+		padding: 30px 0;
 
-    &Wrapper {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+		&Wrapper {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
 }
 
 @media (max-width: 490px) {
-  .products {
-    padding: 20px 0;
+	.products {
+		padding: 20px 0;
 
-    &Wrapper {
-      grid-template-columns: repeat(1, 1fr);
-    }
+		&Wrapper {
+			gap: 10px;
+		}
 
-    &Pagination {
-      flex-direction: column;
-      justify-content: center;
-      padding: 30px 0;
-    }
-  }
+		&Pagination {
+			flex-direction: column;
+			justify-content: center;
+			padding: 30px 0;
+		}
+	}
 }
-
-

@@ -9,9 +9,15 @@
   }
 }
 
+@media (max-width: 767px) {
+	.stock {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 490px) {
   .stock {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 

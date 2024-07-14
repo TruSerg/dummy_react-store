@@ -73,12 +73,27 @@
 
 @media (max-width: 490px) {
 	.productCard {
+		&Discount {
+			font-size: 14px;
+			width: 40px;
+			height: 25px;
+			padding: 8px;
+		}
+
 		&Title {
-			font-size: 16px;
+			font-size: 14px;
 		}
 
 		&Brand {
-			font-size: 16px;
+			font-size: 14px;
+		}
+
+		&Stock {
+			font-size: 14px;
+		}
+
+		&Price {
+			font-size: 14px;
 		}
 	}
 }

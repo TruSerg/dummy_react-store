@@ -6,7 +6,7 @@ interface DiscountProps {
 }
 
 const Discount: FC<DiscountProps> = ({ value, className }) => {
-  return <p className={className}>{Math.round(value)}%</p>;
+  return <p className={className}>{Math.ceil(value)}%</p>;
 };
 
 export default memo(Discount);
